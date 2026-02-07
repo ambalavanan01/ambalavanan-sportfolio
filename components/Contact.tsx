@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
     message: '',
     honeypot: ''
   });
-  
+
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errors, setErrors] = useState<Partial<ContactFormState>>({});
 
@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
       newErrors.email = 'Invalid email format';
     }
     if (!formData.message.trim()) newErrors.message = 'Message is required';
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -40,8 +40,8 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.honeypot) return; 
-    
+    if (formData.honeypot) return;
+
     if (!validate()) return;
 
     setStatus('submitting');
@@ -68,22 +68,22 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-24 bg-slate-50">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-0 lg:gap-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
-          
+
           {/* Info Side (Left) - Advanced Image representing "About Me" vibe */}
           <div className="lg:w-2/5 relative min-h-[400px] lg:min-h-full">
-            <img 
-              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1470&auto=format&fit=crop" 
-              alt="Developer Workspace" 
+            <img
+              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1470&auto=format&fit=crop"
+              alt="Developer Workspace"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px] p-10 lg:p-12 flex flex-col justify-between">
-              
+
               <div className="text-white">
                 <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
                 <p className="text-slate-200 mb-10 leading-relaxed font-light">
                   I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                 </p>
-                
+
                 <div className="space-y-6">
                   <div className="flex items-center gap-5 group">
                     <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
@@ -94,14 +94,23 @@ const Contact: React.FC = () => {
                       <a href="tel:+911234567890" className="text-lg font-medium hover:text-white transition-colors">+91 9894797490</a>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-5 group">
                     <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
                       <i className="fa-solid fa-envelope text-sm"></i>
                     </div>
                     <div>
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Email</p>
-                      <a href="mailto:contact@ambalavanan.dev" className="text-lg font-medium hover:text-white transition-colors">ambalavanan275@gmail.com</a>
+                      <a href="mailto:ambalavanan275@gmail.com" className="text-lg font-medium hover:text-white transition-colors">ambalavanan275@gmail.com</a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-5 group">
+                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
+                      <i className="fa-solid fa-envelope text-sm"></i>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Email</p>
+                      <a href="mailto:nikeshshivan12@gmail.com" className="text-lg font-medium hover:text-white transition-colors">nikeshshivan12@gmail.com</a>
                     </div>
                   </div>
                 </div>
@@ -127,13 +136,13 @@ const Contact: React.FC = () => {
           {/* Form Side (Right) */}
           <div className="lg:w-3/5 p-10 lg:p-12 bg-white">
             <h3 className="text-2xl font-bold text-slate-900 mb-8">Send a Message</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange} className="hidden" />
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-2">First Name:</label>
                   <input
                     id="firstName"
                     type="text"
@@ -141,12 +150,12 @@ const Contact: React.FC = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg bg-slate-50 border ${errors.firstName ? 'border-red-500' : 'border-slate-200'} text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all`}
-                    placeholder="John"
+                    placeholder="Enter Your First Name"
                   />
                   {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
+                  <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-2">Last Name:</label>
                   <input
                     id="lastName"
                     type="text"
@@ -154,14 +163,14 @@ const Contact: React.FC = () => {
                     value={formData.lastName}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                    placeholder="Doe"
+                    placeholder="Enter Your Last Name"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email:</label>
                   <input
                     id="email"
                     type="email"
@@ -169,12 +178,12 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 rounded-lg bg-slate-50 border ${errors.email ? 'border-red-500' : 'border-slate-200'} text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all`}
-                    placeholder="john@example.com"
+                    placeholder="Enter Your Email Address"
                   />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone (Optional)</label>
+                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone: </label>
                   <input
                     id="phone"
                     type="tel"
@@ -182,13 +191,13 @@ const Contact: React.FC = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                    placeholder="+1 234 567 890"
+                    placeholder="Enter Your Phone Number"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Message:</label>
                 <textarea
                   id="message"
                   name="message"
@@ -202,12 +211,11 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="flex flex-col items-end pt-2">
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={status === 'submitting' || status === 'success'}
-                  className={`w-full md:w-auto px-10 py-3 rounded-lg font-medium text-white shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 ${
-                    status === 'success' ? 'bg-green-600' : 'bg-primary hover:bg-primary-hover'
-                  } disabled:opacity-70 disabled:cursor-not-allowed`}
+                  className={`w-full md:w-auto px-10 py-3 rounded-lg font-medium text-white shadow-lg transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 ${status === 'success' ? 'bg-green-600' : 'bg-primary hover:bg-primary-hover'
+                    } disabled:opacity-70 disabled:cursor-not-allowed`}
                 >
                   {status === 'submitting' ? (
                     <>

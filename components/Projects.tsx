@@ -44,11 +44,10 @@ const Projects: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-3 mb-16">
           <button
             onClick={() => setFilter('All')}
-            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-              filter === 'All'
-                ? 'bg-primary border-primary text-white shadow-lg'
-                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
-            }`}
+            className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${filter === 'All'
+              ? 'bg-primary border-primary text-white shadow-lg'
+              : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+              }`}
           >
             All
           </button>
@@ -56,11 +55,10 @@ const Projects: React.FC = () => {
             <button
               key={tag}
               onClick={() => setFilter(tag)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-                filter === tag
-                  ? 'bg-primary border-primary text-white shadow-lg'
-                  : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
-              }`}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${filter === tag
+                ? 'bg-primary border-primary text-white shadow-lg'
+                : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100'
+                }`}
             >
               {tag}
             </button>
@@ -72,13 +70,14 @@ const Projects: React.FC = () => {
             <FadeIn key={project.id} delay={index * 100}>
               <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 ease-out transform hover:-translate-y-2 overflow-hidden border border-slate-100 group flex flex-col h-full">
                 {/* Image Container */}
-                <div 
+                {/* Image Container */}
+                <div
                   className="relative aspect-video overflow-hidden cursor-pointer bg-slate-100"
                   onClick={() => openModal(project.image)}
                 >
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
@@ -95,7 +94,7 @@ const Projects: React.FC = () => {
                   <p className="text-slate-600 text-sm mb-6 line-clamp-3 leading-relaxed">
                     {project.description}
                   </p>
-                  
+
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-6 mt-auto">
                     {project.techStack.map(tech => (
@@ -106,16 +105,16 @@ const Projects: React.FC = () => {
                   </div>
 
                   <div className="flex gap-3">
-                    <a 
-                      href={project.githubUrl} 
+                    <a
+                      href={project.githubUrl}
                       className="flex-1 py-2.5 text-center rounded-lg bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition-colors text-sm flex items-center justify-center gap-2"
                       aria-label={`View Code for ${project.title}`}
                     >
                       <i className="fa-brands fa-github"></i> Code
                     </a>
                     {project.liveUrl && (
-                      <a 
-                        href={project.liveUrl} 
+                      <a
+                        href={project.liveUrl}
                         className="flex-1 py-2.5 text-center rounded-lg bg-secondary/10 text-secondary font-medium hover:bg-secondary hover:text-white transition-all text-sm flex items-center justify-center gap-2"
                         aria-label={`View Live Demo for ${project.title}`}
                       >
@@ -132,24 +131,24 @@ const Projects: React.FC = () => {
 
       {/* Image Zoom Modal */}
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 backdrop-blur-md p-4 animate-[fadeIn_0.3s_ease-out]"
           onClick={closeModal}
         >
           <div className="relative max-w-6xl w-full flex items-center justify-center">
-            <button 
+            <button
               className="absolute -top-12 right-0 text-white/80 hover:text-white text-3xl transition-colors focus:outline-none"
               onClick={closeModal}
               aria-label="Close modal"
             >
               <i className="fa-solid fa-xmark"></i>
             </button>
-            
-            <img 
-              src={selectedImage} 
-              alt="Project Full View" 
+
+            <img
+              src={selectedImage}
+              alt="Project Full View"
               className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()} 
+              onClick={(e) => e.stopPropagation()}
             />
           </div>
         </div>
