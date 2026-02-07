@@ -91,7 +91,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Phone</p>
-                      <a href="tel:+911234567890" className="text-lg font-medium hover:text-white transition-colors">+91 12345 67890</a>
+                      <a href="tel:+911234567890" className="text-lg font-medium hover:text-white transition-colors">+91 9894797490</a>
                     </div>
                   </div>
                   
@@ -101,7 +101,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Email</p>
-                      <a href="mailto:contact@ambalavanan.dev" className="text-lg font-medium hover:text-white transition-colors">contact@ambalavanan.dev</a>
+                      <a href="mailto:contact@ambalavanan.dev" className="text-lg font-medium hover:text-white transition-colors">ambalavanan275@gmail.com</a>
                     </div>
                   </div>
                 </div>
@@ -110,13 +110,13 @@ const Contact: React.FC = () => {
               <div className="mt-12 text-white">
                 <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider mb-4">Follow Me</p>
                 <div className="flex gap-4">
-                  <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all duration-300 border border-white/20" aria-label="GitHub">
+                  <a href="https://github.com/ambalavanan01" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-slate-900 transition-all duration-300 border border-white/20" aria-label="GitHub">
                     <i className="fa-brands fa-github text-lg"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#0077b5] transition-all duration-300 border border-white/20" aria-label="LinkedIn">
+                  <a href="https://www.linkedin.com/in/ambalavananm/" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#0077b5] transition-all duration-300 border border-white/20" aria-label="LinkedIn">
                     <i className="fa-brands fa-linkedin-in text-lg"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#E1306C] transition-all duration-300 border border-white/20" aria-label="Instagram">
+                  <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-[#E1306C] transition-all duration-300 border border-white/20" aria-label="Instagram">
                     <i className="fa-brands fa-instagram text-lg"></i>
                   </a>
                 </div>
