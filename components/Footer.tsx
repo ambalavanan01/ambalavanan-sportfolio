@@ -29,13 +29,13 @@ const Footer: React.FC = () => {
           
           {/* Socials - Right */}
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all duration-300" aria-label="GitHub">
+            <a href="https://github.com/ambalavanan01" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all duration-300" aria-label="GitHub">
               <i className="fa-brands fa-github text-xl"></i>
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-blue-600 flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/ambalavananm/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-blue-600 flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
               <i className="fa-brands fa-linkedin-in text-xl"></i>
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-pink-600 flex items-center justify-center transition-all duration-300" aria-label="Instagram">
+            <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-pink-600 flex items-center justify-center transition-all duration-300" aria-label="Instagram">
               <i className="fa-brands fa-instagram text-xl"></i>
             </a>
           </div>
