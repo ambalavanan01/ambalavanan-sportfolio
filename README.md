@@ -109,4 +109,4 @@ A modern, responsive, and interactive developer portfolio website built with Rea
 
 ---
 
-&copy; Ambalavanan 2024
+&copy; Ambalavanan 2026
