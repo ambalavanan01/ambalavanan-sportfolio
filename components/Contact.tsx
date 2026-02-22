@@ -70,13 +70,13 @@ const Contact: React.FC = () => {
         <div className="flex flex-col lg:flex-row gap-0 lg:gap-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100">
 
           {/* Info Side (Left) - Advanced Image representing "About Me" vibe */}
-          <div className="lg:w-2/5 relative min-h-[400px] lg:min-h-full">
+          <div className="lg:w-2/5 relative">
             <img
               src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1470&auto=format&fit=crop"
               alt="Developer Workspace"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-slate-900/70 backdrop-blur-[2px] p-10 lg:p-12 flex flex-col justify-between">
+            <div className="relative z-10 h-full bg-slate-900/70 backdrop-blur-[2px] p-10 lg:p-12 flex flex-col justify-between">
 
               <div className="text-white">
                 <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
@@ -86,31 +86,31 @@ const Contact: React.FC = () => {
 
                 <div className="space-y-6">
                   <div className="flex items-center gap-5 group">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
+                    <div className="shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
                       <i className="fa-solid fa-phone text-sm"></i>
                     </div>
                     <div>
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Phone</p>
-                      <a href="tel:+911234567890" className="text-lg font-medium hover:text-white transition-colors">+91 9894797490</a>
+                      <a href="tel:+911234567890" className="block text-sm sm:text-base font-medium hover:text-white transition-colors whitespace-nowrap">+91 9894797490</a>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-5 group">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
+                    <div className="shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
                       <i className="fa-solid fa-envelope text-sm"></i>
                     </div>
                     <div>
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Email</p>
-                      <a href="mailto:ambalavanan275@gmail.com" className="text-lg font-medium hover:text-white transition-colors">ambalavanan275@gmail.com</a>
+                      <a href="mailto:ambalavanan275@gmail.com" className="block text-sm sm:text-base font-medium hover:text-white transition-colors whitespace-nowrap overflow-hidden text-ellipsis">ambalavanan275@gmail.com</a>
                     </div>
                   </div>
                   <div className="flex items-center gap-5 group">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
+                    <div className="shrink-0 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white backdrop-blur-sm group-hover:bg-primary transition-colors">
                       <i className="fa-solid fa-envelope text-sm"></i>
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-xs text-slate-300 uppercase font-semibold tracking-wider">Email</p>
-                      <a href="mailto:nikeshshivan12@gmail.com" className="text-lg font-medium hover:text-white transition-colors">nikeshshivan12@gmail.com</a>
+                      <a href="mailto:nikeshshivan12@gmail.com" className="block text-sm sm:text-base font-medium hover:text-white transition-colors whitespace-nowrap overflow-hidden text-ellipsis">nikeshshivan12@gmail.com</a>
                     </div>
                   </div>
                 </div>
