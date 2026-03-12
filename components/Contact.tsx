@@ -311,7 +311,7 @@ const Contact: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className="absolute -top-12 right-0 md:-right-12 text-white/80 hover:text-white text-3xl transition-colors focus:outline-none"
+              className="absolute top-4 right-4 md:-top-12 md:-right-12 z-10 text-slate-400 hover:text-slate-600 md:text-white/80 md:hover:text-white text-2xl md:text-3xl transition-colors focus:outline-none bg-slate-100 hover:bg-slate-200 md:bg-transparent md:hover:bg-transparent w-8 h-8 md:w-auto md:h-auto rounded-full flex items-center justify-center"
               onClick={() => setShowReviewModal(false)}
               aria-label="Close modal"
             >
