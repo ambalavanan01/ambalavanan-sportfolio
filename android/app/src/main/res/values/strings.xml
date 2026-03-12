@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Ambalavanan Portfolio</string>
+    <string name="title_activity_main">Ambalavanan Portfolio</string>
+    <string name="package_name">com.ambalavanan.portfolio</string>
+    <string name="custom_url_scheme">com.ambalavanan.portfolio</string>
+</resources>
