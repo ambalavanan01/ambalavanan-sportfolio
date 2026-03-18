@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/core": "^8.2.0",
     "firebase": "^12.10.0",
     "framer-motion": "^12.34.5",
     "html2canvas": "^1.4.1",
@@ -24,8 +23,6 @@
     "react-simple-typewriter": "^5.0.1"
   },
   "devDependencies": {
-    "@capacitor/android": "^8.2.0",
-    "@capacitor/cli": "^8.2.0",
     "@tailwindcss/postcss": "^4.2.1",
     "@tailwindcss/vite": "^4.2.1",
     "@types/node": "^22.14.0",
