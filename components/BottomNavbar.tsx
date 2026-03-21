@@ -42,9 +42,9 @@ const BottomNavbar: React.FC = () => {
         initial={{ y: 0, opacity: 1 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-[400px]"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-[380px]"
       >
-        <div className="glass-card rounded-full px-6 py-3 flex justify-between items-center border border-white/20 shadow-2xl">
+        <div className="bg-white/95 backdrop-blur-md rounded-full px-4 py-2.5 flex justify-between items-center border border-slate-200 shadow-2xl">
 
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
@@ -52,19 +52,19 @@ const BottomNavbar: React.FC = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="relative p-2 transition-colors duration-300"
+                  className="relative p-2 transition-colors duration-300 flex items-center justify-center w-[3rem] h-[3rem]"
                   aria-label={item.name}
                 >
                   {isActive && (
                     <motion.div
-                      layoutId="active-pill"
-                      className="absolute inset-0 bg-primary rounded-full shadow-lg shadow-primary/30"
+                      layoutId="activeMobileIndicatorPill"
+                      className="absolute inset-0 bg-primary rounded-full shadow-md"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
                   <i 
-                    className={`fa-solid ${item.icon} text-lg relative z-10 transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-slate-500'
+                    className={`fa-solid ${item.icon} text-[1.1rem] relative z-10 transition-colors duration-300 ${
+                      isActive ? 'text-white' : 'text-slate-500 hover:text-slate-800'
                     }`}
                   ></i>
                 </a>

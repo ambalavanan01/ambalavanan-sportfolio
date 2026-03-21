@@ -79,7 +79,7 @@ const ReviewForm: React.FC = () => {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-full bg-slate-50 border border-slate-200 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                         placeholder="Your Name"
                     />
                 </div>
@@ -90,7 +90,7 @@ const ReviewForm: React.FC = () => {
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-full bg-slate-50 border border-slate-200 text-slate-900 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                         placeholder="Your Email"
                     />
                 </div>

@@ -90,7 +90,7 @@ const Projects: React.FC = () => {
                 transitionSpeed={2500}
                 className="h-full"
               >
-                <div className="bg-white  rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 ease-out border border-slate-100  group flex flex-col h-full overflow-hidden">
+                <div className="bg-white rounded-[32px] shadow-lg hover:shadow-2xl transition-all duration-300 ease-out border-none group flex flex-col h-full overflow-hidden">
                   {/* Image Container */}
                   <div
                     className="relative aspect-video overflow-hidden cursor-pointer bg-slate-100 "
@@ -102,8 +102,8 @@ const Projects: React.FC = () => {
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                      <span className="text-white font-semibold tracking-wider flex items-center gap-2 border border-white px-4 py-2 rounded-full bg-white/20">
+                    <div className="absolute inset-0 bg-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                      <span className="text-primary font-semibold tracking-wider flex items-center gap-2 border border-slate-200 px-5 py-2.5 rounded-full bg-white shadow-lg">
                         <i className="fa-solid fa-magnifying-glass-plus"></i> Zoom View
                       </span>
                     </div>

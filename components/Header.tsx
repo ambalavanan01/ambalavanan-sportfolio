@@ -36,57 +36,63 @@ const Header: React.FC = () => {
       />
 
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-bg/90  backdrop-blur-md border-b border-slate-200  py-4 shadow-sm'
-          : 'bg-transparent py-6'
+        className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[96%] max-w-7xl ${isScrolled
+          ? 'top-4 bg-white/95 backdrop-blur-md border border-slate-200 shadow-xl rounded-full py-2 px-2'
+          : 'top-6 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-md rounded-full py-3 px-4'
           }`}
       >
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          {/* Logo */}
+        <div className="w-full px-4 flex justify-between items-center">
+          {/* Logo & Name */}
           <a
             href="#home"
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group z-50"
             aria-label="Home"
           >
-            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg transform group-hover:scale-105 transition-all border-2 border-primary">
+            <div className={`rounded-full overflow-hidden shadow-sm transform group-hover:scale-105 transition-all outline outline-2 outline-offset-2 outline-transparent group-hover:outline-primary ${isScrolled ? 'w-9 h-9' : 'w-10 h-10'}`}>
               <img src="/profile.webp" alt="Ambalavanan profile" className="w-full h-full object-cover" />
             </div>
-            <span className="text-xl font-bold text-slate-800  group-hover:text-primary  transition-colors font-display">
+            <span className="text-lg md:text-xl font-bold text-slate-800 group-hover:text-primary transition-colors font-display">
               Ambalavanan
             </span>
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`font-medium transition-colors duration-200 text-sm tracking-wide relative ${isActive
-                    ? 'text-primary '
-                    : 'text-slate-600  hover:text-primary '
-                    }`}
-                >
-                  {link.name}
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    />
-                  )}
-                </a>
-              );
-            })}
+          <div className="flex items-center gap-4 lg:gap-8">
+            {/* Desktop Nav */}
+            <nav className="hidden lg:flex items-center space-x-2">
+              {NAV_LINKS.map((link) => {
+                const isActive = activeSection === link.href.substring(1);
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={`relative px-4 py-2 rounded-full font-medium transition-colors duration-300 text-sm tracking-wide ${isActive
+                      ? 'text-white'
+                      : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNavIndicatorPill"
+                        className="absolute inset-0 bg-primary rounded-full z-0 shadow-sm"
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.name}</span>
+                  </a>
+                );
+              })}
+            </nav>
 
-            <a
-              href="#contact"
-              className="ml-4 px-6 py-2.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-full transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-0.5 text-sm"
-            >
-              Let's Talk
-            </a>
-          </nav>
+            {/* Hire Me Button */}
+            <div className="flex items-center gap-3 z-50">
+              <a
+                href="#contact"
+                className="hidden md:inline-flex px-6 py-2 bg-slate-900 hover:bg-black text-white font-medium rounded-full transition-all duration-300 shadow-sm hover:shadow transform hover:-translate-y-0.5 text-sm whitespace-nowrap"
+              >
+                Contact Me!
+              </a>
+            </div>
+          </div>
         </div>
       </header>
     </>
