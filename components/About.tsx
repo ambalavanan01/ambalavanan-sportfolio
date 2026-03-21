@@ -107,10 +107,10 @@ const About: React.FC = () => {
 
               <div className="text-slate-600 space-y-4 leading-relaxed text-lg mt-6">
                 <p>
-                  I am a motivated <strong className="text-slate-900">Developer</strong> with a solid grasp of <span className="text-primary font-medium">Java, Python, C++, and Web Technologies</span>. I enjoy solving algorithmic problems and building useful applications.
+                  I am a results-oriented <strong className="text-slate-900">Software Developer</strong> and <strong className="text-slate-900">AWS Certified Cloud Practitioner</strong> with a comprehensive foundation in <span className="text-primary font-medium">Java, Python, C++, C, and Web Technologies (HTML, CSS, JavaScript)</span>. My technical expertise spans across robust solution development, bolstered by a strong command of <strong className="text-slate-800">Core Concepts (DSA, OOP, DBMS, SQL)</strong> and modern <strong className="text-slate-800">Tools & Platforms (Git, GitHub)</strong>.
                 </p>
                 <p>
-                  My portfolio features projects ranging from <strong className="text-slate-800">Crisis Management</strong> to <strong className="text-slate-800">Blockchain Voting</strong>, reflecting my interest in secure and impactful software development.
+                  My portfolio showcases hands-on experience in engineering diverse, high-impact applications. This includes deploying scalable <strong className="text-slate-800">AWS Cloud Architectures (S3, Lambda, API Gateway, CloudFront)</strong>, building <strong className="text-slate-800">Machine Learning (Linear Regression)</strong> models, and developing secure <strong className="text-slate-800">Blockchain (Solidity)</strong> systems. I am driven by solving complex algorithmic challenges and creating innovative, effective software solutions.
                 </p>
               </div>
 

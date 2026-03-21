@@ -15,6 +15,7 @@ import FloatingShare from './components/FloatingShare';
 
 const ResumeViewer = React.lazy(() => import('./components/ResumeViewer'));
 const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
+const ConvertPdf = React.lazy(() => import('./components/ConvertPdf'));
 
 const Portfolio: React.FC = () => (
   <motion.div
@@ -64,6 +65,14 @@ const AnimatedRoutes = () => {
           element={
             <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Admin Panel...</div>}>
               <AdminPanel />
+            </React.Suspense>
+          } 
+        />
+        <Route 
+          path="/convertpdf" 
+          element={
+            <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Converter...</div>}>
+              <ConvertPdf />
             </React.Suspense>
           } 
         />

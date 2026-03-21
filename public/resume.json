@@ -1,0 +1,102 @@
+{
+  "basics": {
+    "name": "Ambalavanan M",
+    "label": "Software Developer",
+    "email": "ambalavanan275@gmail.com",
+    "phone": "+91 9894797490",
+    "url": "https://ambalavanan-sportfolio.netlify.app",
+    "summary": "Results-oriented Software Developer and AWS Certified Cloud Practitioner with a comprehensive foundation in Java, Python, C++, C, and Web Technologies (HTML, CSS, JavaScript). Technical expertise spans across robust solution development, bolstered by a strong command of Core Concepts (DSA, OOP, DBMS, SQL) and modern Tools & Platforms (Git, GitHub). Proven track record of engineering diverse, high-impact applications, including scalable AWS Cloud Architectures (S3, Lambda, API Gateway, CloudFront), Machine Learning (Linear Regression) models, and secure Blockchain (Solidity) systems. Driven by solving complex algorithmic challenges and creating innovative, effective software solutions.",
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "ambalavanan01",
+        "url": "https://github.com/ambalavanan01"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "ambalavanan-m",
+        "url": "https://linkedin.com/in/ambalavanan-m/"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "name": "Certified Courses",
+      "keywords": ["AWS Cloud Foundation"]
+    },
+    {
+      "name": "Programming Languages",
+      "keywords": ["Java", "Python", "C++", "C", "Solidity"]
+    },
+    {
+      "name": "Web Technologies",
+      "keywords": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "name": "Tools & Platforms",
+      "keywords": ["Git", "GitHub", "AWS S3", "AWS Sagemaker", "AWS Lambda", "AWS API Gateway", "AWS CloudFront"]
+    },
+    {
+      "name": "Core Concepts",
+      "keywords": ["Data Structures & Algorithms (DSA)", "DBMS", "SQL", "Object-Oriented Programming (OOP)", "Linear Regression"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Crisis Response Management",
+      "description": "A comprehensive system to coordinate resources and communication efficiently during emergency crises.",
+      "techStack": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "name": "SKE Textiles",
+      "description": "An inventory and sales management platform tailored for textile manufacturing business operations.",
+      "techStack": ["React"]
+    },
+    {
+      "name": "E-Voting Using Blockchain",
+      "description": "Secure and transparent voting application leveraging blockchain technology to prevent fraud and tampering.",
+      "techStack": ["HTML", "CSS", "JavaScript", "Solidity", "Blockchain"]
+    },
+    {
+      "name": "Online Quiz Management",
+      "description": "Interactive quiz platform for educational institutions featuring real-time scoring and performance reporting.",
+      "techStack": ["PHP", "JSON"]
+    },
+    {
+      "name": "Loan Approval Prediction",
+      "description": "The AI Loan Prediction Portal is a comprehensive, end-to-end Machine Learning web application designed to assess and predict loan approval statuses instantly. By leveraging historical financial data and modern cloud architecture, this project bridges the gap between raw datasets and a fully functional user-facing product.",
+      "techStack": ["Python", "Machine Learning", "AWS", "React"]
+    },
+    {
+      "name": "YouTube focusmode browser extension",
+      "description": "Eliminate distractions on YouTube. Hide comments, recommendations, and Shorts with a single click. Focus on what matters.",
+      "techStack": ["JavaScript", "Browser Extension", "CSS"]
+    },
+    {
+      "name": "Local Retrieval-Augmented Generation",
+      "description": "This application allows users to upload documents (PDF, DOCX, PPTX, TXT) to their local machine, automatically chunk and embed the text into a completely local vector database using HuggingFace models, and \"chat\" with their documents seamlessly.",
+      "techStack": ["Python", "HuggingFace", "Streamlit", "Vector DB"]
+    },
+    {
+      "name": "Qr code Generator",
+      "description": "Qr code generation for all Text, URL, wifi connection, mail sending",
+      "techStack": ["JavaScript", "CSS", "HTML", "qrcode-generator"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "VIT University Vellore",
+      "area": "Computer Science",
+      "studyType": "BSc",
+      "startDate": "",
+      "endDate": "2027",
+      "score": "In Progress"
+    }
+  ],
+  "certifications": [
+    {
+      "title": "AWS Certified Cloud Practitioner",
+      "issuer": "Amazon Web Services (AWS)"
+    }
+  ]
+}

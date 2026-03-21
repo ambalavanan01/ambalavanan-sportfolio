@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SKILL_CATEGORIES, PROJECTS } from '../constants';
 
 const ResumeViewer: React.FC = () => {
     const navigate = useNavigate();
+    const resumeRef = useRef<HTMLDivElement>(null);
 
     return (
         <div className="min-h-screen bg-slate-50  text-slate-900  py-12 px-6 font-sans transition-colors duration-300">
@@ -14,15 +15,25 @@ const ResumeViewer: React.FC = () => {
                 >
                     <i className="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i> Back to Portfolio
                 </button>
-                <button
-                    onClick={() => window.print()}
-                    className="px-6 py-2.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
-                >
-                    <i className="fa-solid fa-file-pdf"></i> Download PDF
-                </button>
+                <div className="flex gap-4">
+                    <a
+                        href="/resume.json"
+                        download="resume.json"
+                        className="px-6 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
+                    >
+                        <i className="fa-solid fa-file-code"></i> JSON
+                    </a>
+                    <a
+                        href="/resume.pdf"
+                        download="Ambalavanan_Resume.pdf"
+                        className="px-6 py-2.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
+                    >
+                        <i className="fa-solid fa-file-pdf"></i> PDF
+                    </a>
+                </div>
             </div>
 
-            <div className="max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200 p-10 md:p-16 resume-container">
+            <div ref={resumeRef} className="max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200 p-10 md:p-16 resume-container">
 
                 {/* Header */}
                 <header className="text-center border-b-2 border-primary/20 pb-8 mb-10">
@@ -45,7 +56,7 @@ const ResumeViewer: React.FC = () => {
                         <i className="fa-solid fa-user-tie text-primary"></i> Professional Summary
                     </h2>
                     <p className="text-slate-600  leading-relaxed text-justify">
-                        Motivated Developer with a solid grasp of Java, Python, C++, and Web Technologies. Passionate about solving algorithmic problems and building efficient, scalable, and useful applications. Experienced in full-stack development, with projects ranging from crisis management dashboards to secure blockchain applications.
+                        Results-oriented Software Developer and AWS Certified Cloud Practitioner with a comprehensive foundation in Java, Python, C++, C, and Web Technologies (HTML, CSS, JavaScript). Technical expertise spans across robust solution development, bolstered by a strong command of Core Concepts (DSA, OOP, DBMS, SQL) and modern Tools & Platforms (Git, GitHub). Proven track record of engineering diverse, high-impact applications, including scalable AWS Cloud Architectures (S3, Lambda, API Gateway, CloudFront), Machine Learning (Linear Regression) models, and secure Blockchain (Solidity) systems. Driven by solving complex algorithmic challenges and creating innovative, effective software solutions.
                     </p>
                 </section>
 

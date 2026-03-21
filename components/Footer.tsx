@@ -25,6 +25,8 @@ const Footer: React.FC = () => {
               </a>
             ))}
             <a href="#contact" className="text-slate-600  hover:text-primary  transition-colors font-medium">Contact</a>
+            <span className="hidden md:inline text-slate-300">|</span>
+            <a href="/convertpdf" className="text-slate-400 hover:text-primary transition-colors text-sm font-medium">Converter</a>
           </div>
 
           {/* Socials - Right */}
