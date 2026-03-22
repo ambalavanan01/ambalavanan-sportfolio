@@ -10,7 +10,8 @@ export interface Project {
 
 export interface SkillItem {
   name: string;
-  iconClass: string;
+  iconClass?: string;
+  icon?: string;
   percentage: number;
 }
 

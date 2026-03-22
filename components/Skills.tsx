@@ -1,6 +1,14 @@
 import React from 'react';
+import { Boxes, ChartColumn, Database, GitBranch } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../constants';
 import FadeIn from './FadeIn';
+
+const skillIcons = {
+  boxes: Boxes,
+  'chart-column': ChartColumn,
+  database: Database,
+  'git-branch': GitBranch,
+} as const;
 
 const Skills: React.FC = () => {
   return (
@@ -26,7 +34,13 @@ const Skills: React.FC = () => {
                     <div key={skill.name} className="group">
                       <div className="flex justify-between items-center mb-2">
                         <div className="flex items-center gap-3">
-                          <i className={`${skill.iconClass} text-xl transition-transform group-hover:scale-110`}></i>
+                          {skill.icon ? (
+                            React.createElement(skillIcons[skill.icon as keyof typeof skillIcons], {
+                              className: 'w-5 h-5 text-blue-500 transition-transform group-hover:scale-110'
+                            })
+                          ) : (
+                            <i className={`${skill.iconClass} text-xl transition-transform group-hover:scale-110`}></i>
+                          )}
                           <span className="font-medium text-slate-600 group-hover:text-primary transition-colors text-sm">{skill.name}</span>
                         </div>
                       </div>

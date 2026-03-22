@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import Tilt from 'react-parallax-tilt';
+import { ExternalLink, Github, Search, X } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import FadeIn from './FadeIn';
 
@@ -74,7 +74,7 @@ const Projects: React.FC = () => {
                   }`}
               >
                 {tag}
-                {isSelected && <i className="fa-solid fa-xmark text-xs opacity-70"></i>}
+                {isSelected && <X className="w-3 h-3 opacity-70" />}
               </button>
             );
           })}
@@ -83,14 +83,7 @@ const Projects: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {filteredProjects.map((project, index) => (
             <FadeIn key={project.id} delay={index * 100}>
-              <Tilt
-                tiltMaxAngleX={5}
-                tiltMaxAngleY={5}
-                scale={1.03}
-                transitionSpeed={2500}
-                className="h-full"
-              >
-                <div className="bg-white rounded-[32px] shadow-lg hover:shadow-2xl transition-all duration-300 ease-out border-none group flex flex-col h-full overflow-hidden">
+                <div className="bg-white rounded-[32px] shadow-lg hover:shadow-xl transition-transform duration-300 ease-out border-none group flex flex-col h-full overflow-hidden hover:-translate-y-1">
                   {/* Image Container */}
                   <div
                     className="relative aspect-video overflow-hidden cursor-pointer bg-slate-100 "
@@ -104,7 +97,7 @@ const Projects: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
                       <span className="text-primary font-semibold tracking-wider flex items-center gap-2 border border-slate-200 px-5 py-2.5 rounded-full bg-white shadow-lg">
-                        <i className="fa-solid fa-magnifying-glass-plus"></i> Zoom View
+                        <Search className="w-4 h-4" /> Zoom View
                       </span>
                     </div>
                   </div>
@@ -131,7 +124,7 @@ const Projects: React.FC = () => {
                         className="flex-1 py-2.5 text-center rounded-lg bg-slate-100  text-slate-700  font-medium hover:bg-slate-200  transition-colors text-sm flex items-center justify-center gap-2"
                         aria-label={`View Code for ${project.title}`}
                       >
-                        <i className="fa-brands fa-github"></i> Code
+                        <Github className="w-4 h-4" /> Code
                       </a>
                       {project.liveUrl && (
                         Array.isArray(project.liveUrl) ? (
@@ -144,7 +137,7 @@ const Projects: React.FC = () => {
                               className="flex-1 py-2.5 text-center rounded-lg bg-secondary/10 text-secondary font-medium hover:bg-secondary hover:text-white transition-all text-sm flex items-center justify-center gap-2"
                               aria-label={`View Live Demo ${i + 1} for ${project.title}`}
                             >
-                              <i className="fa-solid fa-external-link-alt"></i> Live {i + 1}
+                              <ExternalLink className="w-4 h-4" /> Live {i + 1}
                             </a>
                           ))
                         ) : (
@@ -155,14 +148,13 @@ const Projects: React.FC = () => {
                             className="flex-1 py-2.5 text-center rounded-lg bg-secondary/10 text-secondary font-medium hover:bg-secondary hover:text-white transition-all text-sm flex items-center justify-center gap-2"
                             aria-label={`View Live Demo for ${project.title}`}
                           >
-                            <i className="fa-solid fa-external-link-alt"></i> Live
+                            <ExternalLink className="w-4 h-4" /> Live
                           </a>
                         )
                       )}
                     </div>
                   </div>
                 </div>
-              </Tilt>
             </FadeIn>
           ))}
         </div>
@@ -181,7 +173,7 @@ const Projects: React.FC = () => {
               onClick={closeModal}
               aria-label="Close modal"
             >
-              <i className="fa-solid fa-xmark"></i>
+              <X className="w-8 h-8" />
             </button>
 
             <img

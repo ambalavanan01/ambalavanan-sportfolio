@@ -1,4 +1,5 @@
 import React from 'react';
+import { Github, Instagram, Linkedin, MessageCircle, Twitter } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 
 const Footer: React.FC = () => {
@@ -32,19 +33,19 @@ const Footer: React.FC = () => {
           {/* Socials - Right */}
           <div className="flex gap-4">
             <a href="https://github.com/ambalavanan01" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-slate-900 flex items-center justify-center transition-all duration-300" aria-label="GitHub">
-              <i className="fa-brands fa-github text-xl"></i>
+              <Github className="w-5 h-5" />
             </a>
             <a href="https://www.linkedin.com/in/ambalavanan-m/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-blue-600 flex items-center justify-center transition-all duration-300" aria-label="LinkedIn">
-              <i className="fa-brands fa-linkedin-in text-xl"></i>
+              <Linkedin className="w-5 h-5" />
             </a>
             <a href="https://x.com/iam_ambalavanan" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-black flex items-center justify-center transition-all duration-300" aria-label="X (Twitter)">
-              <i className="fa-brands fa-x-twitter text-xl"></i>
+              <Twitter className="w-5 h-5" />
             </a>
             <a href="https://www.threads.com/@iam_ambalavanan" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-black flex items-center justify-center transition-all duration-300" aria-label="Threads">
-              <i className="fa-brands fa-threads text-xl"></i>
+              <MessageCircle className="w-5 h-5" />
             </a>
             <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-white shadow-sm hover:shadow-md text-slate-500 hover:text-pink-600 flex items-center justify-center transition-all duration-300" aria-label="Instagram">
-              <i className="fa-brands fa-instagram text-xl"></i>
+              <Instagram className="w-5 h-5" />
             </a>
           </div>
         </div>

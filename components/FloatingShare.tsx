@@ -115,8 +115,8 @@ const FloatingShare: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-50 flex flex-col items-end">
+      <>
+      <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-50 flex flex-col items-end">
         {/* Floating Button */}
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
@@ -136,7 +136,7 @@ const FloatingShare: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 20 }}
               transition={{ type: "spring", bounce: 0.4, duration: 0.5 }}
-              className="absolute bottom-20 right-0 md:bottom-4 md:right-20 mb-0 bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 backdrop-blur-xl w-[340px] md:w-[400px] flex flex-col items-center p-6 origin-bottom md:origin-bottom-right"
+              className="absolute bottom-20 right-0 md:bottom-4 md:right-20 mb-0 bg-white dark:bg-[#1a1a2e] rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 backdrop-blur-xl w-[min(92vw,340px)] md:w-[400px] flex flex-col items-center p-5 md:p-6 origin-bottom md:origin-bottom-right"
               style={{ paddingBottom: '1.5rem' }}
             >
               <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 shrink-0">

@@ -1,78 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { NAV_LINKS } from '../constants';
+import { BriefcaseBusiness, House, Mail, User, Wrench } from 'lucide-react';
 
 const BottomNavbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Extend NAV_LINKS with icons or create a mapping
   const navItems = [
-    { name: 'Home', href: '#home', icon: 'fa-house' },
-    { name: 'About', href: '#about', icon: 'fa-user' },
-    { name: 'Skills', href: '#skills', icon: 'fa-gears' },
-    { name: 'Projects', href: '#projects', icon: 'fa-laptop-code' },
-    { name: 'Contact', href: '#contact', icon: 'fa-envelope' },
+    { name: 'Home', href: '#home', icon: House },
+    { name: 'About', href: '#about', icon: User },
+    { name: 'Skills', href: '#skills', icon: Wrench },
+    { name: 'Projects', href: '#projects', icon: BriefcaseBusiness },
+    { name: 'Contact', href: '#contact', icon: Mail },
   ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    const sections = navItems
+      .map((item) => document.getElementById(item.href.substring(1)))
+      .filter((element): element is HTMLElement => Boolean(element));
 
-      // Track active section
-      const sections = navItems.map(item => item.href.substring(1));
-      let current = '';
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= (element.offsetTop - 200)) {
-          current = section;
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) {
+          setActiveSection(visible.target.id);
         }
+      },
+      {
+        rootMargin: '-30% 0px -45% 0px',
+        threshold: [0.2, 0.35, 0.5],
       }
-      if (current) setActiveSection(current);
-    };
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ y: 0, opacity: 1 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-[380px]"
-      >
+      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 md:hidden w-[92%] max-w-[380px]">
         <div className="bg-white/95 backdrop-blur-md rounded-full px-4 py-2.5 flex justify-between items-center border border-slate-200 shadow-2xl">
 
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
+              const Icon = item.icon;
               return (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="relative p-2 transition-colors duration-300 flex items-center justify-center w-[3rem] h-[3rem]"
+                  className={`relative p-2 transition-all duration-200 flex items-center justify-center w-[3rem] h-[3rem] rounded-full ${
+                    isActive ? 'bg-primary text-white shadow-md' : 'text-slate-500 hover:text-slate-800 hover:bg-slate-100'
+                  }`}
                   aria-label={item.name}
                 >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeMobileIndicatorPill"
-                      className="absolute inset-0 bg-primary rounded-full shadow-md"
-                      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    />
-                  )}
-                  <i 
-                    className={`fa-solid ${item.icon} text-[1.1rem] relative z-10 transition-colors duration-300 ${
-                      isActive ? 'text-white' : 'text-slate-500 hover:text-slate-800'
-                    }`}
-                  ></i>
+                  <Icon className="w-[1.1rem] h-[1.1rem]" />
                 </a>
               );
             })}
           </div>
-        </motion.div>
-    </AnimatePresence>
+        </div>
 
   );
 };

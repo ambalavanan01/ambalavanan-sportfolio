@@ -3,7 +3,7 @@ import FadeIn from './FadeIn';
 import { db } from '../firebase';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import StarRating from './StarRating';
-import { Star, MessageSquare, Quote, Pin, ChevronLeft, ChevronRight, Award } from 'lucide-react';
+import { ArrowRight, Award, ChevronLeft, ChevronRight, MessageSquare, Pin, Quote, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CredlyBadge from './CredlyBadge';
 import { CERTIFICATIONS } from '../constants';
@@ -119,7 +119,7 @@ const About: React.FC = () => {
                   href="#contact"
                   className="inline-flex items-center gap-2 text-primary hover:text-secondary font-bold transition-colors group"
                 >
-                  Get in touch <i className="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                  Get in touch <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </FadeIn>

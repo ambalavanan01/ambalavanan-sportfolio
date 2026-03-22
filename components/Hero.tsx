@@ -1,4 +1,5 @@
 import React from 'react';
+import { FileText, Github, Instagram, Linkedin, MessageCircle, Twitter } from 'lucide-react';
 import { Typewriter } from 'react-simple-typewriter';
 import { Link } from 'react-router-dom';
 
@@ -53,16 +54,16 @@ const Hero: React.FC = () => {
               to="/resume"
               className="w-full sm:w-auto px-8 py-4 bg-white  text-slate-700  border border-slate-200  hover:border-primary hover:text-primary  font-semibold rounded-xl transition-all text-center flex items-center justify-center gap-2 group shadow-sm hover:shadow-md"
             >
-              View Interactive Resume <i className="fa-solid fa-file-lines group-hover:translate-x-1 transition-transform"></i>
+              View Interactive Resume <FileText className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           <div className="flex items-center justify-center lg:justify-start gap-6 text-slate-400 pt-4">
-            <a href="https://github.com/ambalavanan01" className="hover:text-primary transition-colors" aria-label="GitHub"><i className="fa-brands fa-github text-2xl"></i></a>
-            <a href="https://www.linkedin.com/in/ambalavanan-m/" className="hover:text-primary transition-colors" aria-label="LinkedIn"><i className="fa-brands fa-linkedin text-2xl"></i></a>
-            <a href="https://x.com/iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="X (Twitter)"><i className="fa-brands fa-x-twitter text-2xl"></i></a>
-            <a href="https://www.threads.com/@iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="Threads"><i className="fa-brands fa-threads text-2xl"></i></a>
-            <a href="https://www.instagram.com/iam_ambalavanan/" className="hover:text-primary transition-colors" aria-label="Instagram"><i className="fa-brands fa-instagram text-2xl"></i></a>
+            <a href="https://github.com/ambalavanan01" className="hover:text-primary transition-colors" aria-label="GitHub"><Github className="w-6 h-6" /></a>
+            <a href="https://www.linkedin.com/in/ambalavanan-m/" className="hover:text-primary transition-colors" aria-label="LinkedIn"><Linkedin className="w-6 h-6" /></a>
+            <a href="https://x.com/iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="X (Twitter)"><Twitter className="w-6 h-6" /></a>
+            <a href="https://www.threads.com/@iam_ambalavanan" className="hover:text-primary transition-colors" aria-label="Threads"><MessageCircle className="w-6 h-6" /></a>
+            <a href="https://www.instagram.com/iam_ambalavanan/" className="hover:text-primary transition-colors" aria-label="Instagram"><Instagram className="w-6 h-6" /></a>
           </div>
         </div>
 

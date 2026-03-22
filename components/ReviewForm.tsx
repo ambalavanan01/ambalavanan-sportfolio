@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Check, LoaderCircle, Send } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { toast } from 'react-hot-toast';
@@ -49,7 +50,7 @@ const ReviewForm: React.FC = () => {
         return (
             <div className="p-8 bg-green-50 border border-green-200 rounded-3xl text-center shadow-lg">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i className="fa-solid fa-check text-2xl text-green-600"></i>
+                    <Check className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-2">Thank You!</h3>
                 <p className="text-slate-600 leading-relaxed">User review submitted. It will be visible once approved by the administrator.</p>
@@ -115,11 +116,11 @@ const ReviewForm: React.FC = () => {
                 >
                     {isSubmitting ? (
                         <>
-                            <i className="fa-solid fa-circle-notch fa-spin"></i> Submitting...
+                            <LoaderCircle className="w-4 h-4 animate-spin" /> Submitting...
                         </>
                     ) : (
                         <>
-                            Submit Review <i className="fa-solid fa-paper-plane"></i>
+                            Submit Review <Send className="w-4 h-4" />
                         </>
                     )}
                 </button>

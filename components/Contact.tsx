@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Check, Copy, Github, Instagram, Linkedin, LoaderCircle, Mail, MessageCircle, Phone, Send, Star, Twitter, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { FORMSPREE_URL } from '../constants';
 import { ContactFormState, FormStatus } from '../types';
@@ -113,7 +114,7 @@ const Contact: React.FC = () => {
                 <div className="space-y-6">
                   <div className="flex items-center gap-5 group">
                     <div className="shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                      <i className="fa-solid fa-phone text-sm"></i>
+                      <Phone className="w-4 h-4" />
                     </div>
                     <div>
                       <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider">Phone</p>
@@ -123,7 +124,7 @@ const Contact: React.FC = () => {
 
                   <div className="flex items-center gap-5 group relative">
                     <div className="shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                      <i className="fa-solid fa-envelope text-sm"></i>
+                      <Mail className="w-4 h-4" />
                     </div>
                     <div>
                       <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider">Email</p>
@@ -134,14 +135,14 @@ const Contact: React.FC = () => {
                           className="text-slate-400 hover:text-primary transition-colors p-1"
                           title="Copy Email"
                         >
-                          {copiedEmail === 'ambalavanan275@gmail.com' ? <i className="fa-solid fa-check text-green-500"></i> : <i className="fa-regular fa-copy"></i>}
+                          {copiedEmail === 'ambalavanan275@gmail.com' ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
                         </button>
                       </div>
                     </div>
                   </div>
                   <div className="flex items-center gap-5 group relative">
                     <div className="shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                      <i className="fa-solid fa-envelope text-sm"></i>
+                      <Mail className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider">Alt Email</p>
@@ -152,7 +153,7 @@ const Contact: React.FC = () => {
                           className="text-slate-400 hover:text-primary transition-colors p-1"
                           title="Copy Email"
                         >
-                          {copiedEmail === 'nikeshshivan12@gmail.com' ? <i className="fa-solid fa-check text-green-500"></i> : <i className="fa-regular fa-copy"></i>}
+                          {copiedEmail === 'nikeshshivan12@gmail.com' ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
                         </button>
                       </div>
                     </div>
@@ -164,19 +165,19 @@ const Contact: React.FC = () => {
                 <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">Follow Me</p>
                 <div className="flex gap-4">
                   <a href="https://github.com/ambalavanan01" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-900 hover:text-white transition-all duration-300 border border-slate-200" aria-label="GitHub">
-                    <i className="fa-brands fa-github text-lg"></i>
+                    <Github className="w-5 h-5" />
                   </a>
                   <a href="https://www.linkedin.com/in/ambalavanan-m/" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-[#0077b5] hover:text-white transition-all duration-300 border border-slate-200" aria-label="LinkedIn">
-                    <i className="fa-brands fa-linkedin-in text-lg"></i>
+                    <Linkedin className="w-5 h-5" />
                   </a>
                   <a href="https://x.com/iam_ambalavanan" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 border border-slate-200" aria-label="X (Twitter)">
-                    <i className="fa-brands fa-x-twitter text-lg"></i>
+                    <Twitter className="w-5 h-5" />
                   </a>
                   <a href="https://www.threads.com/@iam_ambalavanan" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-black hover:text-white transition-all duration-300 border border-slate-200" aria-label="Threads">
-                    <i className="fa-brands fa-threads text-lg"></i>
+                    <MessageCircle className="w-5 h-5" />
                   </a>
                   <a href="https://www.instagram.com/iam_ambalavanan/" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-[#E1306C] hover:text-white transition-all duration-300 border border-slate-200" aria-label="Instagram">
-                    <i className="fa-brands fa-instagram text-lg"></i>
+                    <Instagram className="w-5 h-5" />
                   </a>
                 </div>
 
@@ -186,7 +187,7 @@ const Contact: React.FC = () => {
                      onClick={() => setShowReviewModal(true)}
                      className="px-6 py-2.5 rounded-full bg-white hover:bg-primary text-slate-900 hover:text-white font-medium text-sm transition-all duration-300 border border-slate-200 shadow-sm flex items-center gap-2"
                    >
-                     <i className="fa-solid fa-star text-yellow-500"></i> Add a Review
+                     <Star className="w-4 h-4 text-yellow-500" /> Add a Review
                    </button>
                 </div>
               </div>
@@ -278,15 +279,15 @@ const Contact: React.FC = () => {
                 >
                   {status === 'submitting' ? (
                     <>
-                      <i className="fa-solid fa-circle-notch fa-spin"></i> Sending...
+                      <LoaderCircle className="w-4 h-4 animate-spin" /> Sending...
                     </>
                   ) : status === 'success' ? (
                     <>
-                      <i className="fa-solid fa-check"></i> Message Sent!
+                      <Check className="w-4 h-4" /> Message Sent!
                     </>
                   ) : (
                     <>
-                      Send Message <i className="fa-solid fa-paper-plane text-sm"></i>
+                      Send Message <Send className="w-4 h-4" />
                     </>
                   )}
                 </button>
@@ -311,7 +312,7 @@ const Contact: React.FC = () => {
               onClick={() => setShowReviewModal(false)}
               aria-label="Close modal"
             >
-              <i className="fa-solid fa-xmark"></i>
+              <X className="w-5 h-5 md:w-8 md:h-8" />
             </button>
             <div className="overflow-hidden rounded-3xl">
                <ReviewForm />

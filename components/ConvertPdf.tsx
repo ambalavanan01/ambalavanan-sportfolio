@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { ArrowLeft, BriefcaseBusiness, Code2, FileText, GraduationCap, Mail, Phone, UserRound } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const ConvertPdf: React.FC = () => {
@@ -43,7 +44,7 @@ const ConvertPdf: React.FC = () => {
                     onClick={() => navigate('/')}
                     className="flex items-center gap-2 text-slate-600 hover:text-primary transition-colors font-medium group mb-6"
                 >
-                    <i className="fa-solid fa-arrow-left transition-transform group-hover:-translate-x-1"></i> Back to Portfolio
+                    <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Back to Portfolio
                 </button>
 
                 <div className="bg-white p-6 rounded-2xl shadow-md border border-slate-200">
@@ -81,7 +82,7 @@ const ConvertPdf: React.FC = () => {
                             download="Ambalavanan_Resume.pdf"
                             className="px-6 py-2.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer"
                         >
-                            <i className="fa-solid fa-file-pdf"></i> Download PDF
+                            <FileText className="w-4 h-4" /> Download PDF
                         </a>
                     </div>
                 </div>
@@ -93,18 +94,18 @@ const ConvertPdf: React.FC = () => {
                         <h1 className="text-4xl font-bold font-display text-slate-900 mb-2">{resumeData.basics?.name}</h1>
                         <div className="text-xl text-primary font-semibold mb-6">{resumeData.basics?.label}</div>
                         <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-600">
-                            {resumeData.basics?.phone && <span className="flex items-center gap-2"><i className="fa-solid fa-phone"></i> {resumeData.basics.phone}</span>}
+                            {resumeData.basics?.phone && <span className="flex items-center gap-2"><Phone className="w-4 h-4" /> {resumeData.basics.phone}</span>}
                             {resumeData.basics?.email && (
                             <>
                                 <span className="hidden md:inline text-slate-300">|</span>
-                                <a href={`mailto:${resumeData.basics.email}`} className="hover:text-primary transition-colors flex items-center gap-2"><i className="fa-solid fa-envelope"></i> {resumeData.basics.email}</a>
+                                <a href={`mailto:${resumeData.basics.email}`} className="hover:text-primary transition-colors flex items-center gap-2"><Mail className="w-4 h-4" /> {resumeData.basics.email}</a>
                             </>
                             )}
                             {resumeData.basics?.profiles?.map((profile: any, i: number) => (
                                 <React.Fragment key={i}>
                                     <span className="hidden md:inline text-slate-300">|</span>
                                     <a href={profile.url} className="hover:text-primary transition-colors flex items-center gap-2">
-                                        <i className={`fa-brands fa-${profile.network.toLowerCase()}`}></i> {profile.url.replace('https://', '').replace(/[/]$/, '')}
+                                        {profile.network} {profile.url.replace('https://', '').replace(/[/]$/, '')}
                                     </a>
                                 </React.Fragment>
                             ))}
@@ -114,7 +115,7 @@ const ConvertPdf: React.FC = () => {
                     {resumeData.basics?.summary && (
                         <section className="mb-10">
                             <h2 className="text-lg font-bold uppercase tracking-widest text-slate-800 border-b border-slate-200 pb-2 mb-4 flex items-center gap-3">
-                                <i className="fa-solid fa-user-tie text-primary"></i> Professional Summary
+                                <UserRound className="w-5 h-5 text-primary" /> Professional Summary
                             </h2>
                             <p className="text-slate-600 leading-relaxed text-justify">{resumeData.basics.summary}</p>
                         </section>
@@ -123,7 +124,7 @@ const ConvertPdf: React.FC = () => {
                     {resumeData.skills && resumeData.skills.length > 0 && (
                         <section className="mb-10">
                             <h2 className="text-lg font-bold uppercase tracking-widest text-slate-800 border-b border-slate-200 pb-2 mb-4 flex items-center gap-3">
-                                <i className="fa-solid fa-code text-primary"></i> Technical Skills
+                                <Code2 className="w-5 h-5 text-primary" /> Technical Skills
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-x-8 text-slate-600">
                                 {resumeData.skills.map((category: any, index: number) => (
@@ -139,7 +140,7 @@ const ConvertPdf: React.FC = () => {
                     {resumeData.projects && resumeData.projects.length > 0 && (
                         <section className="mb-10">
                             <h2 className="text-lg font-bold uppercase tracking-widest text-slate-800 border-b border-slate-200 pb-2 mb-6 flex items-center gap-3">
-                                <i className="fa-solid fa-briefcase text-primary"></i> Projects
+                                <BriefcaseBusiness className="w-5 h-5 text-primary" /> Projects
                             </h2>
                             <div className="space-y-6">
                                 {resumeData.projects.map((project: any, index: number) => (
@@ -162,7 +163,7 @@ const ConvertPdf: React.FC = () => {
                     {resumeData.education && resumeData.education.length > 0 && (
                         <section>
                             <h2 className="text-lg font-bold uppercase tracking-widest text-slate-800 border-b border-slate-200 pb-2 mb-4 flex items-center gap-3">
-                                <i className="fa-solid fa-graduation-cap text-primary"></i> Education
+                                <GraduationCap className="w-5 h-5 text-primary" /> Education
                             </h2>
                             {resumeData.education.map((edu: any, index: number) => (
                                 <div key={index} className="mb-4 last:mb-0">

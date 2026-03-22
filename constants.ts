@@ -47,11 +47,11 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: 'Core Concepts',
     skills: [
-      { name: 'DSA', iconClass: 'fas fa-project-diagram text-blue-500', percentage: 80 },
-      { name: 'DBMS', iconClass: 'fas fa-database text-blue-500', percentage: 85 },
+      { name: 'DSA', icon: 'git-branch', percentage: 80 },
+      { name: 'DBMS', icon: 'database', percentage: 85 },
       { name: 'SQL', iconClass: 'devicon-mysql-plain colored', percentage: 85 },
-      { name: 'OOP', iconClass: 'fas fa-cubes text-blue-500', percentage: 90 },
-      { name: 'Linear Regression', iconClass: 'fas fa-chart-line text-blue-500', percentage: 80 },
+      { name: 'OOP', icon: 'boxes', percentage: 90 },
+      { name: 'Linear Regression', icon: 'chart-column', percentage: 80 },
     ]
   }
 ];

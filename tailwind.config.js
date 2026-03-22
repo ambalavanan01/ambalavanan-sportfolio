@@ -19,8 +19,8 @@ export default {
         muted: '#64748b',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['Lexend', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['"Trebuchet MS"', '"Segoe UI"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

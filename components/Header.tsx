@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll } from 'framer-motion';
 import { NAV_LINKS } from '../constants';
-import { useTheme } from './ThemeContext';
 
 const Header: React.FC = () => {
-  const { theme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
@@ -13,19 +11,38 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-
-      const sections = NAV_LINKS.map(link => link.href.substring(1));
-      let current = '';
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element && window.scrollY >= (element.offsetTop - 150)) {
-          current = section;
-        }
-      }
-      setActiveSection(current);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = NAV_LINKS
+      .map((link) => document.getElementById(link.href.substring(1)))
+      .filter((element): element is HTMLElement => Boolean(element));
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      {
+        rootMargin: '-25% 0px -55% 0px',
+        threshold: [0.2, 0.4, 0.6],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -66,18 +83,11 @@ const Header: React.FC = () => {
                     key={link.name}
                     href={link.href}
                     className={`relative px-4 py-2 rounded-full font-medium transition-colors duration-300 text-sm tracking-wide ${isActive
-                      ? 'text-white'
+                      ? 'bg-primary text-white shadow-sm'
                       : 'text-slate-600 hover:text-slate-900'
                       }`}
                   >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavIndicatorPill"
-                        className="absolute inset-0 bg-primary rounded-full z-0 shadow-sm"
-                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10">{link.name}</span>
+                    <span>{link.name}</span>
                   </a>
                 );
               })}
