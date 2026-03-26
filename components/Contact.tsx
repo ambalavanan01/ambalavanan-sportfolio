@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Check, Copy, Github, Instagram, Linkedin, LoaderCircle, Mail, MessageCircle, Phone, Send, Star, Twitter, X } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { FORMSPREE_URL } from '../constants';
+import emailjs from '@emailjs/browser';
 import { ContactFormState, FormStatus } from '../types';
 import ReviewForm from './ReviewForm';
 
@@ -68,22 +68,24 @@ const Contact: React.FC = () => {
     const loadToast = toast.loading('Sending message...');
 
     try {
-      const response = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const result = await emailjs.send(
+        'service_e1l2fro',
+        'template_gdpn69k',
+        formData as any,
+        'wmBzGQYOhY18188QF'
+      );
 
-      if (response.ok) {
+      if (result.status === 200) {
         setStatus('success');
         setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '', honeypot: '' });
         toast.dismiss(loadToast);
         toast.success('Message sent successfully!');
         setTimeout(() => setStatus('idle'), 3000);
       } else {
-        throw new Error('Failed');
+        throw new Error('Failed to send');
       }
     } catch (error) {
+      console.error('EmailJS Error:', error);
       setStatus('error');
       toast.dismiss(loadToast);
       toast.error('Failed to send message.');
@@ -182,13 +184,13 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="mt-8 pt-8 border-t border-slate-200">
-                   <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">Client Feedback</p>
-                   <button 
-                     onClick={() => setShowReviewModal(true)}
-                     className="px-6 py-2.5 rounded-full bg-white hover:bg-primary text-slate-900 hover:text-white font-medium text-sm transition-all duration-300 border border-slate-200 shadow-sm flex items-center gap-2"
-                   >
-                     <Star className="w-4 h-4 text-yellow-500" /> Add a Review
-                   </button>
+                  <p className="text-xs text-slate-500 uppercase font-semibold tracking-wider mb-4">Client Feedback</p>
+                  <button
+                    onClick={() => setShowReviewModal(true)}
+                    className="px-6 py-2.5 rounded-full bg-white hover:bg-primary text-slate-900 hover:text-white font-medium text-sm transition-all duration-300 border border-slate-200 shadow-sm flex items-center gap-2"
+                  >
+                    <Star className="w-4 h-4 text-yellow-500" /> Add a Review
+                  </button>
                 </div>
               </div>
             </div>
@@ -303,7 +305,7 @@ const Contact: React.FC = () => {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-sm p-4 animate-[fadeIn_0.3s_ease-out]"
           onClick={() => setShowReviewModal(false)}
         >
-          <div 
+          <div
             className="relative max-w-2xl w-full"
             onClick={(e) => e.stopPropagation()}
           >
@@ -315,7 +317,7 @@ const Contact: React.FC = () => {
               <X className="w-5 h-5 md:w-8 md:h-8" />
             </button>
             <div className="overflow-hidden rounded-3xl">
-               <ReviewForm />
+              <ReviewForm />
             </div>
           </div>
         </div>
