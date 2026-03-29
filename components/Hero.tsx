@@ -39,7 +39,10 @@ const Hero: React.FC = () => {
                 />
               </span>
               <br />
-              dedicated to building efficient and scalable software solutions.
+              building scalable React, Java, Python, and AWS-powered products for modern web experiences.
+            </p>
+            <p className="text-slate-600 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 leading-7">
+              Explore my software engineer portfolio, featured case studies, cloud projects, and interactive resume.
             </p>
           </div>
 
@@ -72,7 +75,7 @@ const Hero: React.FC = () => {
           <div className="relative w-72 h-72 md:w-96 md:h-96">
             <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse"></div>
             <img
-              src="/profile.png"
+              src="/profile.webp"
               alt="Ambalavanan M - Software Engineer and Web Developer"
               className="relative w-full h-full object-cover rounded-3xl shadow-2xl z-10 rotate-3 hover:rotate-0 transition-transform duration-500 border-4 border-white"
               loading="eager"

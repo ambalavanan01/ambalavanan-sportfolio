@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="32" fill="#0F172A"/>
+  <circle cx="1032" cy="126" r="170" fill="#2563EB" fill-opacity="0.22"/>
+  <circle cx="948" cy="504" r="216" fill="#14B8A6" fill-opacity="0.18"/>
+  <circle cx="178" cy="140" r="132" fill="#38BDF8" fill-opacity="0.16"/>
+  <rect x="70" y="70" width="1060" height="490" rx="28" fill="url(#paint0_linear)" stroke="rgba(255,255,255,0.12)"/>
+  <text x="110" y="176" fill="#38BDF8" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4">SOFTWARE ENGINEER PORTFOLIO</text>
+  <text x="110" y="280" fill="#F8FAFC" font-family="Segoe UI, Arial, sans-serif" font-size="68" font-weight="800">Ambalavanan M</text>
+  <text x="110" y="360" fill="#CBD5E1" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="500">React, Java, Python, AWS, and product-focused case studies</text>
+  <text x="110" y="424" fill="#94A3B8" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400">Portfolio, resume, cloud projects, machine learning, and blockchain work</text>
+  <rect x="110" y="470" width="270" height="56" rx="18" fill="#2563EB"/>
+  <text x="145" y="506" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">ambalavanan.vercel.app</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="128" y1="104" x2="1044" y2="542" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#1E293B"/>
+    </linearGradient>
+  </defs>
+</svg>

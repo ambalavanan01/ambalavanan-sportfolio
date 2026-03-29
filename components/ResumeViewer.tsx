@@ -40,6 +40,9 @@ const ResumeViewer: React.FC = () => {
                 <header className="text-center border-b-2 border-primary/20 pb-8 mb-10">
                     <h1 className="text-4xl font-bold font-display text-slate-900  mb-2">Ambalavanan M</h1>
                     <div className="text-xl text-primary font-semibold mb-6">Software Developer</div>
+                    <p className="max-w-2xl mx-auto text-slate-600 leading-7 mb-6">
+                        Interactive software engineer resume covering React, Java, Python, AWS, machine learning, and portfolio project experience.
+                    </p>
                     <div className="flex flex-wrap justify-center gap-4 text-sm text-slate-600 ">
                         <span className="flex items-center gap-2"><Phone className="w-4 h-4" /> +91 9894797490</span>
                         <span className="hidden md:inline text-slate-300 ">|</span>

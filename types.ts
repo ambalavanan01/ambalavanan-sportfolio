@@ -1,11 +1,16 @@
 export interface Project {
   id: number;
+  slug: string;
   title: string;
   image: string;
   githubUrl: string;
   liveUrl?: string | string[];
   techStack: string[];
   description: string;
+  seoDescription: string;
+  problem: string;
+  solution: string;
+  impact: string;
 }
 
 export interface SkillItem {

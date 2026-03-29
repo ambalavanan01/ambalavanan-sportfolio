@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
           {/* Info Side (Left) - Light Theme */}
           <div className="lg:w-2/5 relative">
             <img
-              src="/contact-workspace1.webp"
+              src="/contact-workspace1.svg"
               alt="Developer Workspace"
               className="absolute inset-0 w-full h-full object-cover"
               loading="lazy"
@@ -108,7 +108,7 @@ const Contact: React.FC = () => {
             <div className="relative z-10 h-full bg-white/90 backdrop-blur-md p-10 lg:p-12 flex flex-col justify-between border-r border-slate-100">
 
               <div>
-                <h3 className="text-3xl font-bold mb-6 text-slate-900">Let's Connect</h3>
+                <h2 className="text-3xl font-bold mb-6 text-slate-900">Let&apos;s connect about software projects, freelance work, and collaborations</h2>
                 <p className="text-slate-600 mb-10 leading-relaxed font-light">
                   I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                 </p>
@@ -198,7 +198,7 @@ const Contact: React.FC = () => {
 
           {/* Form Side (Right) */}
           <div className="lg:w-3/5 p-10 lg:p-12 bg-white">
-            <h3 className="text-3xl font-extrabold text-slate-900 mb-8">Send a Message</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 mb-8">Send a message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange} className="hidden" />

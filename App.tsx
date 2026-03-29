@@ -12,30 +12,36 @@ import Footer from './components/Footer';
 import BottomNavbar from './components/BottomNavbar';
 import { ThemeProvider } from './components/ThemeContext';
 import FloatingShare from './components/FloatingShare';
+import Seo from './components/Seo';
+import { adminMeta, converterMeta, homeMeta, resumeMeta } from './seo';
+import ProjectDetail from './components/ProjectDetail';
 
 const ResumeViewer = React.lazy(() => import('./components/ResumeViewer'));
 const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
 const ConvertPdf = React.lazy(() => import('./components/ConvertPdf'));
 
 const Portfolio: React.FC = () => (
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{ duration: 0.4 }}
-    className="min-h-screen flex flex-col  transition-colors duration-300"
-  >
-    <Header />
-    <main className="flex-grow">
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </main>
-    <BottomNavbar />
-    <Footer />
-  </motion.div>
+  <>
+    <Seo meta={homeMeta} />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen flex flex-col transition-colors duration-300"
+    >
+      <Header />
+      <main className="flex-grow">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <BottomNavbar />
+      <Footer />
+    </motion.div>
+  </>
 );
 
 const AnimatedRoutes = () => {
@@ -54,26 +60,34 @@ const AnimatedRoutes = () => {
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.4 }}
             >
+              <Seo meta={resumeMeta} />
               <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Resume...</div>}>
                 <ResumeViewer />
               </React.Suspense>
             </motion.div>
           }
         />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route 
           path="/admin" 
           element={
-            <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Admin Panel...</div>}>
-              <AdminPanel />
-            </React.Suspense>
+            <>
+              <Seo meta={adminMeta} />
+              <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Admin Panel...</div>}>
+                <AdminPanel />
+              </React.Suspense>
+            </>
           } 
         />
         <Route 
           path="/convertpdf" 
           element={
-            <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Converter...</div>}>
-              <ConvertPdf />
-            </React.Suspense>
+            <>
+              <Seo meta={converterMeta} />
+              <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading Converter...</div>}>
+                <ConvertPdf />
+              </React.Suspense>
+            </>
           } 
         />
       </Routes>
@@ -81,15 +95,21 @@ const AnimatedRoutes = () => {
   );
 };
 
-const App: React.FC = () => {
+export const AppContent: React.FC = () => {
   return (
     <ThemeProvider>
       <Toaster position="bottom-right" reverseOrder={false} />
-      <Router>
-        <AnimatedRoutes />
-      </Router>
+      <AnimatedRoutes />
       <FloatingShare />
     </ThemeProvider>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 };
 

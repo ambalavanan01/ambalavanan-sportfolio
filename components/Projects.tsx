@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { ExternalLink, Github, Search, X } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, Search, X } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import FadeIn from './FadeIn';
+import { Link } from 'react-router-dom';
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<{ image: string, title: string } | null>(null);
@@ -44,10 +45,10 @@ const Projects: React.FC = () => {
     <section id="projects" className="py-24 bg-white  transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900  mb-4">Featured Projects</h3>
+          <p className="text-primary font-bold tracking-widest uppercase text-sm mb-2">Portfolio</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900  mb-4">Featured software engineering projects and case studies</h2>
           <p className="text-slate-500  max-w-2xl mx-auto">
-            A selection of projects demonstrating my skills in software development.
+            Explore production-style builds across React, AWS, machine learning, blockchain, and browser tooling.
           </p>
         </div>
 
@@ -118,7 +119,14 @@ const Projects: React.FC = () => {
                       ))}
                     </div>
 
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 flex-wrap">
+                      <Link
+                        to={`/projects/${project.slug}`}
+                        className="flex-1 py-2.5 text-center rounded-lg border border-slate-200 bg-white text-slate-900 font-medium hover:border-primary hover:text-primary transition-colors text-sm flex items-center justify-center gap-2"
+                        aria-label={`Read case study for ${project.title}`}
+                      >
+                        <ArrowRight className="w-4 h-4" /> Case Study
+                      </Link>
                       <a
                         href={project.githubUrl}
                         className="flex-1 py-2.5 text-center rounded-lg bg-slate-100  text-slate-700  font-medium hover:bg-slate-200  transition-colors text-sm flex items-center justify-center gap-2"
