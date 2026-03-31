@@ -5,10 +5,11 @@ import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, orderBy, getD
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
 import StarRating from './StarRating';
-import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare } from 'lucide-react';
+import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText } from 'lucide-react';
+import ResumeManager from './ResumeManager';
 
 const AdminPanel: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'reviews' | 'users'>('reviews');
+    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume'>('resume');
     const [reviews, setReviews] = useState<any[]>([]);
     const [adminUsers, setAdminUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
@@ -237,9 +238,21 @@ const AdminPanel: React.FC = () => {
                     >
                         <Users size={20} /> Manage Users
                     </button>
+                    <button
+                        onClick={() => setActiveTab('resume')}
+                        className={`flex-1 sm:flex-none flex justify-center items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
+                            activeTab === 'resume' 
+                            ? 'bg-blue-600 text-white' 
+                            : 'bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white'
+                        }`}
+                    >
+                        <FileText size={20} /> Manage Resume
+                    </button>
                 </div>
 
-                {activeTab === 'reviews' ? (
+                {activeTab === 'resume' ? (
+                    <ResumeManager />
+                ) : activeTab === 'reviews' ? (
                     <div className="grid gap-6">
                         {reviews.length === 0 ? (
                             <div className="text-center py-20 bg-white/5 rounded-2xl border border-dashed border-white/10">
