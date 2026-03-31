@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
     slug: 'crisis-response-management',
     title: 'Crisis Response Management',
     image: '/crisis.webp',
-    githubUrl: 'https://github.com/ambalavanan01/crisis-response-command-center',
+    githubUrl: 'https://github.com/ambalavanan-m/crisis-response-command-center',
     liveUrl: 'https://crisis-management.netlify.app/',
     techStack: ['HTML', 'CSS', 'JavaScript'],
     description: 'A comprehensive system to coordinate resources and communication efficiently during emergency crises.',
@@ -80,7 +80,7 @@ export const PROJECTS: Project[] = [
     slug: 'ske-textiles',
     title: 'SKE Textiles',
     image: '/sketextiles.webp',
-    githubUrl: 'https://github.com/ambalavanan01/ske-text',
+    githubUrl: 'https://github.com/ambalavanan-m/ske-text',
     liveUrl: 'https://ske-textiles.netlify.app/',
     techStack: ['React'],
     description: 'An inventory and sales management platform tailored for textile manufacturing business operations.',
@@ -98,7 +98,7 @@ export const PROJECTS: Project[] = [
     slug: 'e-voting-using-blockchain',
     title: 'E-Voting Using Blockchain',
     image: '/e-voting.webp',
-    githubUrl: 'https://github.com/ambalavanan01/E-Voting-using-Blockchain',
+    githubUrl: 'https://github.com/ambalavanan-m/E-Voting-using-Blockchain',
     liveUrl: 'https://e-vote-blockchain.netlify.app/',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Solidity', 'Blockchain'],
     description: 'Secure and transparent voting application leveraging blockchain technology to prevent fraud and tampering.',
@@ -116,7 +116,7 @@ export const PROJECTS: Project[] = [
     slug: 'online-quiz-management',
     title: 'Online Quiz Management',
     image: '/onlinequiz.webp',
-    githubUrl: 'https://github.com/ambalavanan01/Online-Quiz-management',
+    githubUrl: 'https://github.com/ambalavanan-m/Online-Quiz-management',
     techStack: ['PHP', 'JSON'],
     description: 'Interactive quiz platform for educational institutions featuring real-time scoring and performance reporting.',
     seoDescription:
@@ -133,7 +133,7 @@ export const PROJECTS: Project[] = [
     slug: 'loan-approval-prediction',
     title: 'Loan Approval Prediction',
     image: '/loan-prediction.webp',
-    githubUrl: 'https://github.com/ambalavanan01/Loan-Approval-Prediction',
+    githubUrl: 'https://github.com/ambalavanan-m/Loan-Approval-Prediction',
     liveUrl: ['https://aws-loan-approval-prediction.netlify.app/', 'https://d11lsquvmj22ld.cloudfront.net/'],
     techStack: ['Python', 'Machine Learning', 'AWS', 'React'],
     description: 'The AI Loan Prediction Portal is a comprehensive, end-to-end Machine Learning web application designed to assess and predict loan approval statuses instantly. By leveraging historical financial data and modern cloud architecture, this project bridges the gap between raw datasets and a fully functional user-facing product.',
@@ -151,7 +151,7 @@ export const PROJECTS: Project[] = [
     slug: 'youtube-focusmode-browser-extension',
     title: 'YouTube focusmode browser extension',
     image: '/focus-mode.webp',
-    githubUrl: 'https://github.com/ambalavanan01/YouTube-focusmode-broswer-extension-',
+    githubUrl: 'https://github.com/ambalavanan-m/YouTube-focusmode-broswer-extension-',
     techStack: ['JavaScript', 'Browser Extension', 'CSS'],
     description: 'Eliminate distractions on YouTube. Hide comments, recommendations, and Shorts with a single click. Focus on what matters.',
     seoDescription:
@@ -168,7 +168,7 @@ export const PROJECTS: Project[] = [
     slug: 'local-retrieval-augmented-generation',
     title: 'Local Retrieval-Augmented Generation',
     image: '/RAG.webp',
-    githubUrl: 'https://github.com/ambalavanan01/Am-RAG',
+    githubUrl: 'https://github.com/ambalavanan-m/Am-RAG',
     liveUrl: 'https://am-rag.streamlit.app/',
     techStack: ['Python', 'HuggingFace', 'Streamlit', 'Vector DB'],
     description: 'This application allows users to upload documents (PDF, DOCX, PPTX, TXT) to their local machine, automatically chunk and embed the text into a completely local vector database using HuggingFace models, and "chat" with their documents seamlessly.',
@@ -180,25 +180,7 @@ export const PROJECTS: Project[] = [
       'This project uses local vector storage and HuggingFace-powered embeddings so users can upload files and chat with their documents without a cloud-first dependency.',
     impact:
       'It demonstrates applied AI engineering, document processing, vector search integration, and practical experimentation with modern RAG patterns.',
-  },
-  {
-    id: 8,
-    slug: 'qr-code-generator',
-    title: 'Qr code Generator',
-    image: '/qrcode.webp',
-    githubUrl: 'https://github.com/ambalavanan01/Qr-generation',
-    liveUrl: 'https://qrcodegenerator-pro.neocities.org/',
-    techStack: ['JavaScript', 'CSS', 'HTML', 'qrcode-generator'],
-    description: 'Qr code generation for all Text, URL, wifi connection, mail sending',
-    seoDescription:
-      'QR Code Generator is a JavaScript web tool for generating QR codes for text, URLs, Wi-Fi credentials, and email actions.',
-    problem:
-      'Users often need a quick way to convert common data types like URLs, Wi-Fi details, and plain text into scannable QR codes.',
-    solution:
-      'I built a simple browser-based generator that supports several practical QR use cases with a straightforward interface.',
-    impact:
-      'The project highlights utility-focused product design, client-side JavaScript implementation, and fast interaction design.',
-  },
+  }
 ];
 
 export const FORMSPREE_URL = "https://formspree.io/f/mrepwolr";
