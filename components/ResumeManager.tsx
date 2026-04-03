@@ -3,8 +3,11 @@ import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { toast } from 'react-hot-toast';
 import { ResumeData, ResumeEducation, ResumeProject } from '../types';
-import { Plus, Trash2, Save, Download } from 'lucide-react';
+import { Plus, Trash2, Save, Download, FileText } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../constants';
+import { generateResumePDF } from '../utils/resumePdf';
+import { generateResumeDocx } from '../utils/resumeDocx';
+
 
 const DEFAULT_RESUME: ResumeData = {
     name: 'Ambalavanan M',
@@ -103,20 +106,60 @@ const ResumeManager: React.FC = () => {
         }
     };
 
+    const handleDownloadPdf = async () => {
+        if (!resumeData) return;
+        try {
+            toast.loading("Generating Professional PDF...", { id: "pdf-toast" });
+            generateResumePDF(resumeData);
+            toast.success("Premium PDF Downloaded!", { id: "pdf-toast" });
+        } catch (error: any) {
+            console.error("Error generating PDF:", error);
+            const errMsg = error?.message || String(error);
+            toast.error(`Failed to generate PDF: ${errMsg}`, { id: "pdf-toast", duration: 6000 });
+        }
+    };
+
+    const handleDownloadDocx = async () => {
+        if (!resumeData) return;
+        try {
+            toast.loading("Generating Word Document...", { id: "docx-toast" });
+            await generateResumeDocx(resumeData);
+            toast.success("Word Document Downloaded!", { id: "docx-toast" });
+        } catch (error: any) {
+            console.error("Error generating Word doc:", error);
+            const errMsg = error?.message || String(error);
+            toast.error(`Failed to generate Word doc: ${errMsg}`, { id: "docx-toast" });
+        }
+    };
+
     if (loading) return <div className="text-slate-400 p-8">Loading Resume Editor...</div>;
     if (!resumeData) return null;
+
 
     return (
         <div className="bg-slate-900 border border-white/10 rounded-2xl p-6 md:p-8 space-y-8">
             <div className="flex justify-between items-center pb-4 border-b border-white/10">
                 <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Manage Resume</h2>
-                <div className="flex gap-4">
+                <div className="flex flex-wrap gap-4 mt-4 sm:mt-0">
+                    <button
+                        onClick={handleDownloadPdf}
+                        className="px-4 py-2 bg-purple-600/20 text-purple-400 hover:bg-purple-600 hover:text-white rounded-lg transition-all border border-purple-500/30 text-sm font-bold flex items-center gap-2"
+                    >
+                        <FileText size={16} /> Premium PDF
+                    </button>
+                    <button
+                        onClick={handleDownloadDocx}
+                        className="px-4 py-2 bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white rounded-lg transition-all border border-blue-500/30 text-sm font-bold flex items-center gap-2"
+                    >
+                        <FileText size={16} /> MS Word
+                    </button>
                     <button 
                         onClick={seedDefault}
                         className="px-4 py-2 bg-yellow-500/20 text-yellow-500 hover:bg-yellow-500 hover:text-white rounded-lg transition-colors border border-yellow-500/30 text-sm font-bold flex items-center gap-2"
                     >
                         <Download size={16} /> Seed Default
                     </button>
+
                     <button 
                         onClick={handleSave}
                         disabled={saving}

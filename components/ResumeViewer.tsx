@@ -5,8 +5,7 @@ import { db } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { ResumeData } from '../types';
 import { toast } from 'react-hot-toast';
-import { generateResumePDF } from '../utils/resumePdf';
-import { generateResumeDocx } from '../utils/resumeDocx';
+
 const ResumeViewer: React.FC = () => {
     const navigate = useNavigate();
     const resumeRef = useRef<HTMLDivElement>(null);
@@ -35,34 +34,10 @@ const ResumeViewer: React.FC = () => {
     }, []);
 
 
-    const handleDownloadPdf = async () => {
-        if (!resumeData) return;
-        
-        try {
-            toast.loading("Drawing Professional PDF...", { id: "pdf-toast" });
-
-            // Use the direct drawing utility (jsPDF + autoTable)
-            generateResumePDF(resumeData);
-
-            toast.success("Premium PDF Downloaded!", { id: "pdf-toast" });
-        } catch (error: any) {
-            console.error("Error generating PDF:", error);
-            const errMsg = error?.message || String(error);
-            toast.error(`Failed to generate PDF: ${errMsg}`, { id: "pdf-toast", duration: 6000 });
-        }
+    const handleDownloadResume = () => {
+        window.open('/Ambalavanan_M_ATS_Resume.pdf', '_blank');
     };
-    const handleDownloadDocx = async () => {
-        if (!resumeData) return;
-        try {
-            toast.loading("Generating Word Document...", { id: "docx-toast" });
-            await generateResumeDocx(resumeData);
-            toast.success("Word Document Downloaded!", { id: "docx-toast" });
-        } catch (error: any) {
-            console.error("Error generating Word doc:", error);
-            const errMsg = error?.message || String(error);
-            toast.error(`Failed to generate Word doc: ${errMsg}`, { id: "docx-toast" });
-        }
-    };
+
 
     if (loading) {
         return (
@@ -97,18 +72,13 @@ const ResumeViewer: React.FC = () => {
                 </button>
                 <div className="flex gap-4">
                     <button
-                        onClick={handleDownloadPdf}
+                        onClick={handleDownloadResume}
                         className="px-6 py-2.5 bg-primary hover:bg-primary-hover text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer border border-primary/20"
                     >
-                        <FileText className="w-4 h-4" /> Download Premium PDF
-                    </button>
-                    <button
-                        onClick={handleDownloadDocx}
-                        className="px-6 py-2.5 bg-white text-slate-700 border border-slate-200 hover:border-blue-600 hover:text-blue-600 font-medium rounded-lg shadow-sm hover:shadow-md transition-all flex items-center gap-2 cursor-pointer"
-                    >
-                        <FileText className="w-4 h-4 text-blue-600" /> Download MS Word
+                        <FileText className="w-4 h-4" /> Download Resume
                     </button>
                 </div>
+
             </div>
 
             <div ref={resumeRef} className="max-w-4xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden border border-slate-200 p-10 md:p-16 resume-container">
@@ -209,7 +179,6 @@ const ResumeViewer: React.FC = () => {
                         </div>
                     </section>
                 )}
-
             </div>
             
             <style>{`
