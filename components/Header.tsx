@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { NAV_LINKS } from '../constants';
 
 const Header: React.FC = () => {
@@ -69,18 +70,24 @@ const Header: React.FC = () => {
       >
         <div className="w-full px-4 flex justify-between items-center">
           {/* Logo & Name */}
-          <a
-            href="#home"
-            className="flex items-center gap-3 group z-50"
+          <div
+            onClick={(e) => {
+              if (e.detail === 3) {
+                window.dispatchEvent(new CustomEvent('toggle-terminal'));
+              }
+            }}
+            className="flex items-center gap-3 group z-50 cursor-pointer"
             aria-label="Home"
           >
-            <div className={`rounded-full overflow-hidden shadow-sm transform group-hover:scale-105 transition-all outline outline-2 outline-offset-2 outline-transparent group-hover:outline-primary ${isScrolled ? 'w-9 h-9' : 'w-10 h-10'}`}>
-              <img src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/profile_svzusg.webp" alt="Ambalavanan profile" className="w-full h-full object-cover" />
-            </div>
-            <span className="text-lg md:text-xl font-bold text-slate-800 group-hover:text-primary transition-colors font-display">
-              Ambalavanan
-            </span>
-          </a>
+            <Link to="/" className="flex items-center gap-3">
+              <div className={`rounded-full overflow-hidden shadow-sm transform group-hover:scale-105 transition-all outline outline-2 outline-offset-2 outline-transparent group-hover:outline-primary ${isScrolled ? 'w-9 h-9' : 'w-10 h-10'}`}>
+                <img src="https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/profile_svzusg.webp" alt="Ambalavanan profile" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-lg md:text-xl font-bold text-slate-800 group-hover:text-primary transition-colors font-display">
+                Ambalavanan
+              </span>
+            </Link>
+          </div>
 
           <div className="flex items-center gap-4 lg:gap-8">
             {/* Desktop Nav */}

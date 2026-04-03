@@ -15,6 +15,8 @@ import FloatingShare from './components/FloatingShare';
 import Seo from './components/Seo';
 import { adminMeta, homeMeta, resumeMeta } from './seo';
 import ProjectDetail from './components/ProjectDetail';
+import NotFound from './components/NotFound';
+import Terminal from './components/Terminal';
 
 const ResumeViewer = React.lazy(() => import('./components/ResumeViewer'));
 const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
@@ -78,7 +80,8 @@ const AnimatedRoutes = () => {
             </>
           } 
         />
-
+        {/* Fallback Catch-all Route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
@@ -90,6 +93,7 @@ export const AppContent: React.FC = () => {
       <Toaster position="bottom-right" reverseOrder={false} />
       <AnimatedRoutes />
       <FloatingShare />
+      <Terminal />
     </ThemeProvider>
   );
 };
