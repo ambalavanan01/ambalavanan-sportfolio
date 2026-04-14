@@ -10,12 +10,12 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeContext';
-import FloatingShare from './components/FloatingShare';
 import Seo from './components/Seo';
 import { adminMeta, homeMeta, resumeMeta } from './seo';
 import ProjectDetail from './components/ProjectDetail';
 import NotFound from './components/NotFound';
 import Terminal from './components/Terminal';
+import ChatWidget from './components/ChatWidget';
 
 const ResumeViewer = React.lazy(() => import('./components/ResumeViewer'));
 const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
@@ -90,7 +90,8 @@ export const AppContent: React.FC = () => {
     <ThemeProvider>
       <Toaster position="bottom-right" reverseOrder={false} />
       <AnimatedRoutes />
-      <FloatingShare />
+      {/* <FloatingShare /> */}
+      <ChatWidget />
       <Terminal />
     </ThemeProvider>
   );

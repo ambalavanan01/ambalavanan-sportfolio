@@ -5,12 +5,14 @@ import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, orderBy, getD
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
 import StarRating from './StarRating';
-import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText } from 'lucide-react';
+import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText, HelpCircle, Send, Mail } from 'lucide-react';
 import ResumeManager from './ResumeManager';
 
 const AdminPanel: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume'>('resume');
+    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume' | 'queries'>('resume');
     const [reviews, setReviews] = useState<any[]>([]);
+    const [queriesList, setQueriesList] = useState<any[]>([]);
+    const [replyTexts, setReplyTexts] = useState<{[key: string]: string}>({});
     const [adminUsers, setAdminUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -56,9 +58,25 @@ const AdminPanel: React.FC = () => {
             setAdminUsers(usersData);
         });
 
+        const qQueries = query(collection(db, 'queries'));
+        const unsubscribeQueries = onSnapshot(qQueries, (snapshot) => {
+            const queriesData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            // Sort manually in JS to avoid index requirement
+            const sortedData = queriesData.sort((a: any, b: any) => {
+               const dateA = a.createdAt?.seconds || 0;
+               const dateB = b.createdAt?.seconds || 0;
+               return dateB - dateA;
+            });
+            setQueriesList(sortedData);
+        }, (err) => {
+            console.error("Firestore Listener Error:", err);
+            toast.error("Hub Sync Error: " + err.message);
+        });
+
         return () => {
             unsubscribeReviews();
             unsubscribeUsers();
+            unsubscribeQueries();
         };
     }, [isAuthenticated]);
 
@@ -92,6 +110,70 @@ const AdminPanel: React.FC = () => {
             toast.success('Review deleted!');
         } catch (error) {
             toast.error('Failed to delete review.');
+        }
+    };
+
+    const handleDeleteQuery = async (id: string) => {
+        if (!window.confirm('Are you sure you want to delete this broadcast?')) return;
+        try {
+            await deleteDoc(doc(db, 'queries', id));
+            toast.success('Broadcast purged locally.');
+        } catch (error) {
+            toast.error('Failed to purge record.');
+        }
+    };
+
+    const handleClearAllQueries = async () => {
+        if (!window.confirm('WARNING: This will permanently delete ALL active broadcasts in the Hub. Continue?')) return;
+        
+        const loadToast = toast.loading('Purging hub history...');
+        try {
+            const q = query(collection(db, 'queries'));
+            const snapshot = await getDocs(q);
+            const batch = writeBatch(db);
+            
+            snapshot.docs.forEach((d) => {
+                batch.delete(d.ref);
+            });
+            
+            await batch.commit();
+            toast.dismiss(loadToast);
+            toast.success('Hub history cleared successfully!');
+        } catch (error) {
+            toast.dismiss(loadToast);
+            console.error(error);
+            toast.error('Failed to clear hub history.');
+        }
+    };
+
+    const handleSendReply = async (id: string) => {
+        const reply = replyTexts[id];
+        if (!reply?.trim()) {
+            toast.error('Reply content cannot be empty.');
+            return;
+        }
+
+        try {
+            await updateDoc(doc(db, 'queries', id), {
+                adminReply: reply,
+                repliedAt: serverTimestamp(),
+                status: 'replied'
+            });
+            setReplyTexts(prev => ({ ...prev, [id]: '' }));
+            toast.success('Reply broadcasted to hub!');
+        } catch (error) {
+            toast.error('Failed to transmit reply.');
+        }
+    };
+
+    const handleToggleQueryStatus = async (id: string, currentStatus: string) => {
+        try {
+            await updateDoc(doc(db, 'queries', id), {
+                status: currentStatus === 'new' ? 'replied' : 'new'
+            });
+            toast.success('Query status updated!');
+        } catch (error) {
+            toast.error('Failed to update query status.');
         }
     };
 
@@ -227,6 +309,7 @@ const AdminPanel: React.FC = () => {
                 <div className="flex flex-wrap gap-3 mb-12">
                     {[
                         { id: 'reviews', label: 'Reviews', icon: MessageSquare },
+                        { id: 'queries', label: 'Queries', icon: HelpCircle },
                         { id: 'users', label: 'Identity', icon: Users },
                         { id: 'resume', label: 'Resume', icon: FileText }
                     ].map((tab) => (
@@ -317,6 +400,127 @@ const AdminPanel: React.FC = () => {
                                                 className="w-full lg:w-48 px-6 py-3 bg-white hover:bg-red-50 text-red-500 font-bold rounded-xl transition-all border border-red-100 flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
                                             >
                                                 <Trash2 size={16} /> Purge
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        )}
+                    </div>
+                ) : activeTab === 'queries' ? (
+                    <div className="grid gap-6">
+                        <div className="flex justify-between items-center mb-4 px-2">
+                             <div>
+                                <h3 className="text-sm font-bold text-text uppercase tracking-[0.2em]">Broadcast Stream</h3>
+                                <p className="text-[10px] text-slate-400 font-bold uppercase mt-1">Live interaction logs</p>
+                             </div>
+                             <button 
+                                onClick={handleClearAllQueries}
+                                className="px-6 py-2.5 bg-red-50 text-red-600 border border-red-100 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all shadow-sm flex items-center gap-2"
+                             >
+                                <Trash2 size={14} /> Clear All History
+                             </button>
+                        </div>
+                        {queriesList.length === 0 ? (
+                            <div className="text-center py-24 bg-white rounded-[2.5rem] border border-dashed border-slate-200">
+                                <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">No active queries found.</p>
+                            </div>
+                        ) : (
+                            queriesList.map((q) => (
+                                <div
+                                    key={q.id}
+                                    className={`p-8 rounded-[2.5rem] border studio-card bg-white transition-all duration-300 ${q.status === 'new'
+                                        ? 'border-orange-200 bg-orange-[0.01]'
+                                        : 'border-slate-200'
+                                        }`}
+                                >
+                                    <div className="flex flex-col lg:flex-row justify-between gap-10">
+                                        <div className="flex-grow space-y-6">
+                                            <div className="flex flex-wrap items-center gap-5">
+                                                <div className="w-14 h-14 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center font-extrabold text-xl text-orange-600">
+                                                    <HelpCircle size={28} />
+                                                </div>
+                                                <div className="min-w-0 flex-1">
+                                                    <h3 className="text-xl font-extrabold text-text tracking-tight">{q.name || 'Anonymous User'}</h3>
+                                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{q.email || 'No Email Provided'}</p>
+                                                </div>
+                                                {q.status === 'new' && (
+                                                    <span className="px-3 py-1 bg-orange-100 text-orange-600 text-[10px] font-bold rounded-full uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+                                                        <Clock size={10} /> Active Doubt
+                                                    </span>
+                                                )}
+                                            </div>
+
+                                            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                                                <p className="text-text font-medium leading-relaxed">
+                                                    {q.query || 'Content unavailable.'}
+                                                </p>
+                                            </div>
+
+                                            <div className="flex flex-wrap gap-6 pt-4 border-t border-slate-100">
+                                                <div>
+                                                    <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest mb-1">Entry Timestamp</p>
+                                                    <p className="text-[10px] font-bold text-text uppercase">
+                                                        {q.createdAt?.toDate ? q.createdAt.toDate().toLocaleString() : 'Processing...'}
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-[9px] font-bold text-red-400 uppercase tracking-widest mb-1">Auto-Purge Schedule</p>
+                                                    <p className="text-[10px] font-bold text-red-500 uppercase">
+                                                        {q.expireAt?.toDate ? q.expireAt.toDate().toLocaleString() : 'Scheduled'}
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            {/* Reply Section */}
+                                            <div className="mt-6 pt-6 border-t border-slate-100">
+                                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Broadcast Reply</p>
+                                                {q.adminReply && (
+                                                    <div className="mb-4 p-4 bg-primary/5 border border-primary/10 rounded-xl relative">
+                                                        <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">Current Transmission:</p>
+                                                        <p className="text-sm text-text font-medium italic">"{q.adminReply}"</p>
+                                                        <span className="text-[9px] text-slate-400 mt-2 block">Replied on: {q.repliedAt?.toDate ? q.repliedAt.toDate().toLocaleString() : 'Just now'}</span>
+                                                    </div>
+                                                )}
+                                                <div className="flex gap-2">
+                                                    <textarea
+                                                        placeholder="Enter broadcast response..."
+                                                        className="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary transition-all resize-none"
+                                                        rows={2}
+                                                        value={replyTexts[q.id] || ''}
+                                                        onChange={(e) => setReplyTexts(prev => ({ ...prev, [q.id]: e.target.value }))}
+                                                    ></textarea>
+                                                    <button
+                                                        onClick={() => handleSendReply(q.id)}
+                                                        className="px-6 bg-text hover:bg-primary text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 text-xs uppercase tracking-widest shadow-lg shadow-text/5"
+                                                    >
+                                                        <Send size={16} /> Broadcast
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
+                                            <button
+                                                onClick={() => handleToggleQueryStatus(q.id, q.status)}
+                                                className={`w-full lg:w-48 px-6 py-3 font-bold rounded-xl transition-all border text-xs uppercase tracking-widest flex items-center justify-center gap-2 ${q.status === 'new'
+                                                    ? 'bg-text text-white border-text'
+                                                    : 'bg-white border-slate-200 text-slate-500 hover:border-text hover:text-text'
+                                                    }`}
+                                            >
+                                                <Check size={16} /> {q.status === 'new' ? 'Mark Resolved' : 'Reopen Query'}
+                                            </button>
+                                            <a
+                                                href={`mailto:${q.email}?subject=Response to your query: ${q.query ? q.query.substring(0, 30) : ''}...`}
+                                                className="w-full lg:w-48 px-6 py-3 bg-white hover:bg-slate-50 text-text font-bold rounded-xl transition-all border border-slate-200 flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
+                                            >
+                                                <Mail size={16} /> Contact User
+                                            </a>
+                                            <button
+                                                onClick={() => handleDeleteQuery(q.id)}
+                                                className="w-full lg:w-48 px-6 py-3 bg-white hover:bg-red-50 text-red-500 font-bold rounded-xl transition-all border border-red-100 flex items-center justify-center gap-2 text-xs uppercase tracking-widest"
+                                            >
+                                                <Trash2 size={16} /> Delete Broadcast
                                             </button>
                                         </div>
                                     </div>

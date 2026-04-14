@@ -43,33 +43,19 @@ export interface Certification {
   image?: string;
 }
 
-export interface ResumeEducation {
-  id: string;
-  degree: string;
-  institution: string;
-  year: string;
-}
-
-export interface ResumeProject {
-  id: string;
-  title: string;
-  techStack: string;
-  description: string;
-}
-
 export interface ResumeData {
+  pdfUrl: string;
+  docxUrl: string;
+}
+
+export type UserQueryStatus = 'new' | 'replied';
+
+export interface UserQuery {
+  id?: string;
   name: string;
-  title: string;
-  summary: string;
-  phone: string;
   email: string;
-  github: string;
-  linkedin: string;
-  skills: {
-    id: string;
-    category: string;
-    items: string;
-  }[];
-  education: ResumeEducation[];
-  projects: ResumeProject[];
+  query: string;
+  createdAt: any; // Firestore Timestamp
+  expireAt: any;  // Firestore Timestamp
+  status: UserQueryStatus;
 }

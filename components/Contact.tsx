@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Copy, Github, Instagram, Linkedin, LoaderCircle, Mail, MessageCircle, Phone, Send, Star, Twitter, X } from 'lucide-react';
+import { Check, Copy, Github, HelpCircle, Instagram, Linkedin, LoaderCircle, Mail, MessageCircle, Phone, Send, Star, Twitter, X } from 'lucide-react';
 import toast from 'react-hot-toast';
 import emailjs from '@emailjs/browser';
 import { ContactFormState, FormStatus } from '../types';
@@ -161,7 +161,27 @@ const Contact: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+ 
+                   {/* Quick Doubt Hub Trigger */}
+                   <div className="flex items-center gap-5 group">
+                     <div className="shrink-0 w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all duration-300">
+                       <HelpCircle className="w-4 h-4" />
+                     </div>
+                     <div className="flex-1 min-w-0">
+                       <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-0.5">Quick Doubt</p>
+                       <button 
+                         onClick={() => {
+                            const trigger = document.querySelector('[aria-label="Connect & Support Hub"]') as HTMLButtonElement;
+                            if(trigger) trigger.click();
+                            else toast.error("Hub not found!");
+                         }} 
+                         className="block text-sm font-bold text-text hover:text-primary transition-colors tracking-tight text-left text-orange-600 uppercase tracking-widest text-[10px]"
+                       >
+                         Transfer Inquiry Details →
+                       </button>
+                     </div>
+                   </div>
+                 </div>
             </div>
 
             <div className="p-10 lg:p-14 pt-0">
