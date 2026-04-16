@@ -25,7 +25,6 @@ const Footer: React.FC = () => {
                 {link.name}
               </a>
             ))}
-            <a href="#contact" className="text-xs font-bold text-slate-500 hover:text-primary uppercase tracking-widest transition-colors">Contact</a>
           </div>
 
           {/* Socials - Right */}

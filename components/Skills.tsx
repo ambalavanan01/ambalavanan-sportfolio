@@ -1,5 +1,5 @@
 import React from 'react';
-import { Boxes, ChartColumn, Database, GitBranch } from 'lucide-react';
+import { Boxes, ChartColumn, Database, GitBranch, Lightbulb, Users, MessageSquare, RotateCw, Clock } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../constants';
 import FadeIn from './FadeIn';
 
@@ -8,6 +8,11 @@ const skillIcons = {
   'chart-column': ChartColumn,
   database: Database,
   'git-branch': GitBranch,
+  lightbulb: Lightbulb,
+  users: Users,
+  comments: MessageSquare,
+  refresh: RotateCw,
+  clock: Clock,
 } as const;
 
 const Skills: React.FC = () => {
@@ -34,7 +39,7 @@ const Skills: React.FC = () => {
                       <div className="flex justify-between items-center mb-3">
                         <div className="flex items-center gap-4">
                           {skill.icon ? (
-                            React.createElement(skillIcons[skill.icon as keyof typeof skillIcons], {
+                            React.createElement(skillIcons[skill.icon as keyof typeof skillIcons] || Boxes, {
                               className: 'w-4 h-4 text-primary transition-all duration-300 transform group-hover:scale-110'
                             })
                           ) : (
@@ -45,14 +50,16 @@ const Skills: React.FC = () => {
                       </div>
 
                       {/* Progress Bar Track */}
-                      <div className="w-full bg-slate-50 border border-slate-100 rounded-full h-1 overflow-hidden">
-                        {/* Progress Bar Fill */}
-                        <div
-                          className="bg-primary h-1 rounded-full transition-all duration-1000 ease-out"
-                          style={{ width: `${skill.percentage}%` }}
-                        >
+                      {skill.percentage !== undefined && (
+                        <div className="w-full bg-slate-50 border border-slate-100 rounded-full h-1 overflow-hidden">
+                          {/* Progress Bar Fill */}
+                          <div
+                            className="bg-primary h-1 rounded-full transition-all duration-1000 ease-out"
+                            style={{ width: `${skill.percentage}%` }}
+                          >
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   ))}
                 </div>

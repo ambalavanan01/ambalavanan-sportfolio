@@ -22,7 +22,7 @@ const Projects: React.FC = () => {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
           <p className="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-3">Portfolio</p>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-text mb-6">Selected Works</h2>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-text mb-6">Project Works</h2>
           <p className="text-slate-500 max-w-2xl mx-auto text-lg">
             A modular approach to software engineering. Specialized in React ecosystems, 
             Java backends, and AWS architecture.

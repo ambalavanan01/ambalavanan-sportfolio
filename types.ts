@@ -17,7 +17,7 @@ export interface SkillItem {
   name: string;
   iconClass?: string;
   icon?: string;
-  percentage: number;
+  percentage?: number;
 }
 
 export interface SkillCategory {
