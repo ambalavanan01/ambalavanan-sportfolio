@@ -17,6 +17,14 @@ import NotFound from './components/NotFound';
 import Terminal from './components/Terminal';
 import ChatWidget from './components/ChatWidget';
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 const ResumeViewer = React.lazy(() => import('./components/ResumeViewer'));
 const AdminPanel = React.lazy(() => import('./components/AdminPanel'));
 
@@ -89,6 +97,7 @@ export const AppContent: React.FC = () => {
   return (
     <ThemeProvider>
       <Toaster position="bottom-right" reverseOrder={false} />
+      <ScrollToTop />
       <AnimatedRoutes />
       {/* <FloatingShare /> */}
       <ChatWidget />

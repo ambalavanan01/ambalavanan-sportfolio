@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -10,6 +10,22 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { scrollYProgress } = useScroll();
+  const lastClickRef = useRef<{ count: number; time: number }>({ count: 0, time: 0 });
+
+  const handleLogoClick = () => {
+    const now = Date.now();
+    if (now - lastClickRef.current.time < 500) {
+      lastClickRef.current.count++;
+    } else {
+      lastClickRef.current.count = 1;
+    }
+    lastClickRef.current.time = now;
+
+    if (lastClickRef.current.count === 3) {
+      window.dispatchEvent(new CustomEvent('toggle-terminal'));
+      lastClickRef.current.count = 0;
+    }
+  };
 
   useEffect(() => {
     let ticking = false;
@@ -91,11 +107,7 @@ const Header: React.FC = () => {
           
           {/* Logo & Name */}
           <div
-            onClick={(e) => {
-              if (e.detail === 3) {
-                window.dispatchEvent(new CustomEvent('toggle-terminal'));
-              }
-            }}
+            onClick={handleLogoClick}
             className="flex items-center gap-3 group z-50 cursor-pointer"
             aria-label="Home"
           >
