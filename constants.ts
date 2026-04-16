@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
       'The project demonstrates my ability to translate real-world coordination problems into a usable, high-clarity front-end experience.',
   },
   {
-    id: 5,
+    id: 3,
     slug: 'loan-approval-prediction',
     title: 'Loan Approval Prediction',
     image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/loan-prediction_uxggsv.webp',
