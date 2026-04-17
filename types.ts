@@ -70,14 +70,12 @@ export interface ResumeData {
   docxUrl: string;
 }
 
-export type UserQueryStatus = 'new' | 'replied';
 
-export interface UserQuery {
+export interface ContactQuery {
   id?: string;
   name: string;
   email: string;
-  query: string;
-  createdAt: any; // Firestore Timestamp
-  expireAt: any;  // Firestore Timestamp
-  status: UserQueryStatus;
+  subject: string;
+  message: string;
+  createdAt: any;
 }
