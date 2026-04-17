@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
               Available for projects
             </div>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-text leading-[1.05] tracking-tight">
+            <h1 className="text-3xl md:text-5xl lg:text-5xl font-extrabold text-text leading-[1.05] tracking-tight">
               Crafting <span className="text-primary italic">scalable</span> products with precision.
             </h1>
             <p className="text-slate-500 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">

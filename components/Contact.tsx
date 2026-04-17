@@ -161,6 +161,27 @@ const Contact: React.FC = () => {
                       </div>
                     </div>
                   </div>
+
+                  {/* Email 3 */}
+                  <div className="flex items-center gap-5 group relative">
+                    <div className="shrink-0 w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-0.5">Professional Email</p>
+                      <div className="flex items-center gap-2">
+                        <a href="mailto:ambalavanan.m@zohomail.in" className="block text-sm font-bold text-text hover:text-primary transition-colors truncate tracking-tight">ambalavanan.m@zohomail.in</a>
+                        <button
+                          onClick={() => handleCopy('ambalavanan.m@zohomail.in')}
+                          className="text-slate-300 hover:text-primary transition-all p-1"
+                          title="Copy Email"
+                        >
+                          {copiedEmail === 'ambalavanan.m@zohomail.in' ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
  
                  </div>
             </div>
@@ -201,14 +222,14 @@ const Contact: React.FC = () => {
 
           {/* Form Side (Right) */}
           <div className="lg:w-3/5 p-10 lg:p-14 bg-white">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-10 pb-4 border-b border-slate-100">Broadcast Message</h3>
+            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-10 pb-4 border-b border-slate-100">Message ME!</h3>
 
             <form onSubmit={handleSubmit} className="space-y-8">
               <input type="text" name="honeypot" value={formData.honeypot} onChange={handleChange} className="hidden" />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label htmlFor="firstName" className="block text-[10px] font-bold text-text uppercase tracking-widest">First Name</label>
+                  <label htmlFor="firstName" className="block text-[10px] font-bold text-text uppercase tracking-widest">First Name:</label>
                   <input
                     id="firstName"
                     type="text"
@@ -221,7 +242,7 @@ const Contact: React.FC = () => {
                   {errors.firstName && <p className="text-red-500 text-[10px] mt-1 font-bold italic">{errors.firstName}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="lastName" className="block text-[10px] font-bold text-text uppercase tracking-widest">Last Name</label>
+                  <label htmlFor="lastName" className="block text-[10px] font-bold text-text uppercase tracking-widest">Last Name:</label>
                   <input
                     id="lastName"
                     type="text"
@@ -236,7 +257,7 @@ const Contact: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-[10px] font-bold text-text uppercase tracking-widest">Email Address</label>
+                  <label htmlFor="email" className="block text-[10px] font-bold text-text uppercase tracking-widest">Email Address:</label>
                   <input
                     id="email"
                     type="email"
@@ -244,12 +265,12 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-5 py-3.5 rounded-xl bg-slate-50 text-text placeholder-slate-400 focus:outline-none border border-slate-200 focus:border-primary/50 transition-all text-sm font-medium"
-                    placeholder="hi@example.com"
+                    placeholder="ambalavanan275@gmail.com"
                   />
                   {errors.email && <p className="text-red-500 text-[10px] mt-1 font-bold italic">{errors.email}</p>}
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="phone" className="block text-[10px] font-bold text-text uppercase tracking-widest">Phone (Optional)</label>
+                  <label htmlFor="phone" className="block text-[10px] font-bold text-text uppercase tracking-widest">Phone:</label>
                   <input
                     id="phone"
                     type="tel"
@@ -257,13 +278,13 @@ const Contact: React.FC = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-5 py-3.5 rounded-xl bg-slate-50 text-text placeholder-slate-400 focus:outline-none border border-slate-200 focus:border-primary/50 transition-all text-sm font-medium"
-                    placeholder="+91 . . ."
+                    placeholder="+91 9894797490"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="block text-[10px] font-bold text-text uppercase tracking-widest">Message Body</label>
+                <label htmlFor="message" className="block text-[10px] font-bold text-text uppercase tracking-widest">Message Body:</label>
                 <textarea
                   id="message"
                   name="message"
@@ -292,7 +313,7 @@ const Contact: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      Execute Message <Send className="w-3.5 h-3.5 text-white" />
+                      Send Message! <Send className="w-3.5 h-3.5 text-white" />
                     </>
                   )}
                 </button>

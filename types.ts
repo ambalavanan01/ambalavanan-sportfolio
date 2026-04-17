@@ -46,7 +46,26 @@ export interface Certification {
   image?: string;
 }
 
+export interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  duration: string;
+  details?: string[];
+}
+
+export interface Experience {
+  role: string;
+  company: string;
+  location: string;
+  duration: string;
+  description: string[];
+}
+
 export interface ResumeData {
+  summary: string;
+  experience: Experience[];
+  education: Education[];
   pdfUrl: string;
   docxUrl: string;
 }

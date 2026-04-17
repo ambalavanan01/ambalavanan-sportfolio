@@ -102,12 +102,12 @@ const About: React.FC = () => {
             <FadeIn direction="up" delay={200}>
               <div className="space-y-6">
                 <p className="text-primary font-bold tracking-[0.2em] uppercase text-xs">Profile</p>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-text leading-[1.1] tracking-tight">Building resilient architecture for the next generation of <span className="text-primary">digital products</span>.</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-text leading-[1.1] tracking-tight">Building resilient architecture for the next generation of <span className="text-primary">digital products</span>.</h2>
               </div>
 
               <div className="text-slate-500 space-y-6 leading-relaxed text-lg mt-8 font-normal">
                 <p>
-                  I specialize in engineering <span className="text-text font-semibold">high-performance, modular applications</span> that solve complex business challenges. As an <span className="text-text font-semibold underline decoration-primary/30 underline-offset-4">AWS Certified Cloud Practitioner</span>, I ensure every solution is built on a foundation of scalability, security, and operational excellence.
+                  I specialize in engineering <span className="text-text font-semibold">high-performance, modular applications</span> that solve complex business challenges. As an <span className="text-text font-semibold underline decoration-primary/30 underline-offset-4">AWS Cloud Practitioner</span>, I ensure every solution is built on a foundation of scalability, security, and operational excellence.
                 </p>
                 <p>
                   Whether you need a full-stack web experience or a cloud-native backend, I translate your <strong className="text-text">business vision into robust code</strong> that evolves with your needs. I don't just build features; I build systems designed to scale and succeed.
@@ -147,7 +147,7 @@ const About: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-3xl font-extrabold text-text tracking-tighter">{averageRating || '0.0'}</p>
-                      <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Global Rating</p>
+                      <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Visitors Rating</p>
                     </div>
                   </div>
                   <div className="hidden sm:flex gap-1">

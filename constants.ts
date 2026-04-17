@@ -130,44 +130,6 @@ export const PROJECTS: Project[] = [
     role: 'ML & Cloud Engineer',
     duration: '3 Months',
     metrics: ['95% Prediction Accuracy', 'AWS Scalable Architecture', 'Instant Decisioning'],
-  },
-  {
-    id: 4,
-    slug: 'ske-textiles',
-    title: 'SKE Textiles and Readymades',
-    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/sketextiles_zqewv1.webp',
-    githubUrl: 'https://github.com/ambalavanan-m/ske-text',
-    liveUrl: 'https://ske-textiles.netlify.app/',
-    techStack: ['React'],
-    description: 'An inventory and sales management platform tailored for textile manufacturing business operations.',
-    seoDescription:
-      'SKE Textiles is a React-based inventory and sales management platform designed for textile manufacturing workflows, stock visibility, and operational efficiency.',
-    problem:
-      'Textile operations need a clearer view of inventory, sales activity, and day-to-day business data without relying on fragmented manual tracking.',
-    solution:
-      'This platform organizes inventory and sales workflows in a focused React interface tailored to textile business needs.',
-    impact:
-      'It showcases domain-specific product thinking, business workflow modeling, and the ability to build practical software for operations teams.',
-    role: 'Lead React Developer',
-    duration: '4 Months',
-    metrics: ['Real-time Inventory tracking', '50% Reduced Error Rates', 'Enhanced Visibility'],
-  },
-  {
-    id: 5,
-    slug: 'online-quiz-management',
-    title: 'Online Quiz Management',
-    image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/q_auto/f_auto/v1775117847/quizmanagement_oskzc6.jpg',
-    githubUrl: 'https://github.com/ambalavanan-m/Online-Quiz-management',
-    techStack: ['PHP', 'JSON'],
-    description: 'Interactive quiz platform for educational institutions featuring real-time scoring and performance reporting.',
-    seoDescription:
-      'Online Quiz Management is an educational quiz platform with scoring and reporting features for institutions that need interactive assessments.',
-    problem:
-      'Educational organizations need lightweight ways to run quizzes, evaluate results quickly, and monitor learner performance.',
-    solution:
-      'This project delivers a web-based quiz workflow with assessment delivery, score calculation, and reporting-oriented data handling.',
-    impact:
-      'It demonstrates my ability to build education-focused systems around usability, feedback loops, and structured result reporting.',
   }
 ];
 
@@ -175,8 +137,24 @@ export const FORMSPREE_URL = "https://formspree.io/f/mrepwolr";
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    title: 'AWS Certified Cloud Practitioner',
+    title: 'AWS Cloud Practitioner',
     issuer: 'Amazon Web Services (AWS)',
     image: 'https://res.cloudinary.com/dfmtkqqaa/image/upload/f_auto,q_auto,w_800/aws-academy-graduate-cloud-foundations-training-bad_watake.png'
   }
 ];
+
+export const RESUME_DATA: ResumeData = {
+  summary: "Ambitious Computer Science student with a strong passion for building scalable web applications and exploring cloud-native technologies. Dedicated to mastering React, Java, and Python through hands-on academic projects and independent learning.",
+  experience: [],
+  education: [
+    {
+      degree: "Bachelor of Engineering in Computer Science",
+      institution: "Your University Name",
+      location: "City, State",
+      duration: "2020 - 2024",
+      details: ["Specialization in Software Engineering and Cloud Computing", "GPA: 8.5/10 (Placeholder)"]
+    }
+  ],
+  pdfUrl: '/Ambalavanan_M_Resume.pdf',
+  docxUrl: '/Ambalavanan_M_Resume.docx'
+};

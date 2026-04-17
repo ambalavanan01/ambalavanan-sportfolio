@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
           {/* Brand - Left */}
           <div className="text-left">
             <h2 className="text-xl font-extrabold text-text tracking-tight mb-2 uppercase">Ambalavanan</h2>
-            <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em]">Modular Software Systems</p>
+            <p className="text-slate-400 font-bold text-[10px] uppercase tracking-[0.2em]">Developer</p>
           </div>
 
           {/* Navigation - Center */}
@@ -51,13 +51,13 @@ const Footer: React.FC = () => {
         {/* Global Footer Bottom */}
         <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-            &copy; {new Date().getFullYear()} ambalavanan &mdash; built for scale
+            Copyright &copy; {new Date().getFullYear()} ambalavanan 
           </p>
           
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">v1.6.2</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">v1.6.3</span>
             </div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">India</p>
           </div>

@@ -3,9 +3,7 @@
 
 @layer base {
   body {
-    @apply bg-bg text-text font-sans antialiased;
-    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
-    background-size: 24px 24px;
+    @apply bg-slate-50 text-text font-sans antialiased;
     background-attachment: fixed;
   }
 
