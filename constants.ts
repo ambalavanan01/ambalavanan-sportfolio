@@ -144,17 +144,6 @@ export const CERTIFICATIONS: Certification[] = [
 ];
 
 export const RESUME_DATA: ResumeData = {
-  summary: "Ambitious Computer Science student with a strong passion for building scalable web applications and exploring cloud-native technologies. Dedicated to mastering React, Java, and Python through hands-on academic projects and independent learning.",
-  experience: [],
-  education: [
-    {
-      degree: "Bachelor of Engineering in Computer Science",
-      institution: "Vellore Institute of Technology",
-      location: "Vellore, Tamil Nadu",
-      duration: "2020 - 2024",
-      details: ["Specialization in Software Engineering and Cloud Computing", "CGPA: 8.5/10"]
-    }
-  ],
   pdfUrl: '/Ambalavanan_M_Resume.pdf',
   docxUrl: '/Ambalavanan_M_Resume.docx'
 };

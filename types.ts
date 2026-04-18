@@ -63,9 +63,6 @@ export interface Experience {
 }
 
 export interface ResumeData {
-  summary: string;
-  experience: Experience[];
-  education: Education[];
   pdfUrl: string;
   docxUrl: string;
 }
