@@ -36,10 +36,10 @@ const Footer: React.FC = () => {
               { icon: MessageCircle, url: 'https://www.threads.com/@iam_ambalavanan', label: 'Threads', hoverBg: 'hover:bg-black' },
               { icon: Instagram, url: 'https://www.instagram.com/iam_ambalavanan/', label: 'Instagram', hoverBg: 'hover:bg-[#E1306C]' }
             ].map((social) => (
-              <a 
+              <a
                 key={social.label}
-                href={social.url} 
-                className={`w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-white ${social.hoverBg} transition-all`} 
+                href={social.url}
+                className={`w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400 hover:text-white ${social.hoverBg} transition-all`}
                 aria-label={social.label}
               >
                 <social.icon className="w-4 h-4" />
@@ -51,13 +51,13 @@ const Footer: React.FC = () => {
         {/* Global Footer Bottom */}
         <div className="pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-            Copyright &copy; {new Date().getFullYear()} ambalavanan 
+            Copyright &copy; {new Date().getFullYear()} ambalavanan
           </p>
-          
+
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">v1.6.3</span>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">v1.6.4</span>
             </div>
             <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">India</p>
           </div>

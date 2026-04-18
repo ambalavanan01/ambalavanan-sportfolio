@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowLeft, Download, Printer, Github, Linkedin, Mail, MapPin, Briefcase, GraduationCap, Award, ExternalLink, Globe, FileText, FileCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { RESUME_DATA, SKILL_CATEGORIES, PROJECTS } from '../constants';
+import { RESUME_DATA, SKILL_CATEGORIES, PROJECTS, CERTIFICATIONS } from '../constants';
 
 const ResumeViewer: React.FC = () => {
     const navigate = useNavigate();
@@ -180,7 +180,7 @@ const ResumeViewer: React.FC = () => {
                                     Expertise
                                 </h2>
                                 <div className="space-y-8">
-                                    {SKILL_CATEGORIES.slice(1, 5).map((category, catIndex) => (
+                                    {SKILL_CATEGORIES.map((category, catIndex) => (
                                         <div key={catIndex}>
                                             <h4 className="text-[10px] font-bold text-text uppercase tracking-widest mb-4 opacity-50">{category.title}</h4>
                                             <div className="flex flex-wrap gap-2">
@@ -220,14 +220,12 @@ const ResumeViewer: React.FC = () => {
                                     <Award className="w-3.5 h-3.5 text-primary" /> Certifications
                                 </h2>
                                 <div className="space-y-6">
-                                    <div className="space-y-1">
-                                        <h4 className="text-sm font-bold text-text leading-tight">AWS Cloud Practitioner</h4>
-                                        <p className="text-[10px] font-bold text-primary uppercase tracking-widest">Amazon Web Services</p>
-                                    </div>
-                                    <div className="space-y-1">
-                                        <h4 className="text-sm font-bold text-text leading-tight">Solidity Development</h4>
-                                        <p className="text-[10px] font-bold text-primary uppercase tracking-widest">Blockchain Council</p>
-                                    </div>
+                                    {CERTIFICATIONS.map((cert, index) => (
+                                        <div key={index} className="space-y-1">
+                                            <h4 className="text-sm font-bold text-text leading-tight">{cert.title}</h4>
+                                            <p className="text-[10px] font-bold text-primary uppercase tracking-widest">{cert.issuer}</p>
+                                        </div>
+                                    ))}
                                 </div>
                             </section>
                         </div>
