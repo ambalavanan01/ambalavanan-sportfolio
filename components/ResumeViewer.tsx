@@ -1,12 +1,12 @@
 import React from 'react';
-import { ArrowLeft, Download, Printer, Github, Linkedin, Mail, MapPin, Briefcase, GraduationCap, Award, ExternalLink, Globe, FileText, FileCheck } from 'lucide-react';
+import { ArrowLeft, Download, Github, Linkedin, Mail, MapPin, Briefcase, GraduationCap, Award, ExternalLink, Globe, FileText, FileCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { RESUME_DATA, SKILL_CATEGORIES, PROJECTS, CERTIFICATIONS } from '../constants';
-
+ 
 const ResumeViewer: React.FC = () => {
     const navigate = useNavigate();
-
+ 
     const handleDownload = (url: string, type: string) => {
         if (!url) {
             toast.error(`${type} version is not currently available.`);
@@ -14,11 +14,7 @@ const ResumeViewer: React.FC = () => {
         }
         window.open(url, '_blank');
     };
-
-    const handlePrint = () => {
-        window.print();
-    };
-
+ 
     return (
         <div className="min-h-screen bg-slate-50 transition-colors duration-300 font-sans print:bg-white selection:bg-primary/10">
             {/* Top Navigation - Hidden on Print */}
@@ -30,14 +26,6 @@ const ResumeViewer: React.FC = () => {
                     <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" /> Portfolio Dashboard
                 </button>
                 <div className="flex gap-3">
-                    <button
-                        onClick={handlePrint}
-                        className="p-3 bg-white border border-slate-200 text-slate-500 hover:text-primary hover:border-primary/30 rounded-xl transition-all shadow-sm flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest"
-                        title="Print Resume"
-                    >
-                        <Printer size={16} /> 
-                        <span className="hidden sm:inline">Print Version</span>
-                    </button>
                     <a
                         href="https://ambalavanan-resume-check.vercel.app/"
                         target="_blank"
@@ -57,7 +45,7 @@ const ResumeViewer: React.FC = () => {
                     </button>
                 </div>
             </div>
-
+ 
             {/* Resume Main Container */}
             <main className="max-w-5xl mx-auto px-6 pb-24 print:p-0 print:max-w-none">
                 <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] border border-slate-200 print:shadow-none print:border-none print:rounded-none">
@@ -86,7 +74,7 @@ const ResumeViewer: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-
+ 
                             <div className="flex gap-4 print:hidden">
                                 <a href="https://github.com/ambalavanan-m" className="p-3 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white hover:text-slate-900 transition-all">
                                     <Github size={20} />
@@ -97,7 +85,7 @@ const ResumeViewer: React.FC = () => {
                             </div>
                         </div>
                     </div>
-
+ 
                     {/* Content Body */}
                     <div className="p-12 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-16 print:p-0 print:pt-10">
                         
@@ -113,7 +101,7 @@ const ResumeViewer: React.FC = () => {
                                     {RESUME_DATA.summary}
                                 </p>
                             </section>
-
+ 
                             {/* Work Experience */}
                             {RESUME_DATA.experience.length > 0 && (
                                 <section>
@@ -144,7 +132,7 @@ const ResumeViewer: React.FC = () => {
                                     </div>
                                 </section>
                             )}
-
+ 
                             {/* Key Projects */}
                             <section className="print:break-before-page print:pt-10">
                                 <h2 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-10 flex items-center gap-3">
@@ -170,7 +158,7 @@ const ResumeViewer: React.FC = () => {
                                 </div>
                             </section>
                         </div>
-
+ 
                         {/* Right Column (Sidebar) */}
                         <div className="lg:col-span-4 space-y-16 print:col-span-12 print:grid print:grid-cols-2 print:gap-16 print:space-y-0 print:border-t print:border-slate-100 print:pt-12">
                             
@@ -194,7 +182,7 @@ const ResumeViewer: React.FC = () => {
                                     ))}
                                 </div>
                             </section>
-
+ 
                             {/* Education Section */}
                             <section>
                                 <h2 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
@@ -213,7 +201,7 @@ const ResumeViewer: React.FC = () => {
                                     ))}
                                 </div>
                             </section>
-
+ 
                             {/* Certifications Sidebar */}
                             <section className="bg-slate-50 p-8 rounded-3xl border border-slate-100 print:bg-transparent print:p-0 print:border-none">
                                 <h2 className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
@@ -240,5 +228,5 @@ const ResumeViewer: React.FC = () => {
         </div>
     );
 };
-
+ 
 export default ResumeViewer;
