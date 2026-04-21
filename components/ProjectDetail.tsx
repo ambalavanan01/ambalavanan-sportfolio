@@ -1,26 +1,50 @@
-﻿import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ExternalLink, Github, Calendar, User, Target, Share2, CheckCircle2 } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { PROJECTS } from '../constants';
+import { db } from '../firebase';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 import Seo from './Seo';
 import { getProjectMeta } from '../seo';
 import { toast } from 'react-hot-toast';
 
 const ProjectDetail: React.FC = () => {
   const { slug } = useParams();
-  const projectIndex = PROJECTS.findIndex((item) => item.slug === slug);
-  const project = PROJECTS[projectIndex];
-  const nextProject = PROJECTS[(projectIndex + 1) % PROJECTS.length];
+  const [allProjects, setAllProjects] = useState<any[]>(PROJECTS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, 'dynamic_projects'), orderBy('id', 'asc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const dynamicProjects = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+      const combined = [...PROJECTS, ...dynamicProjects].sort((a, b) => a.id - b.id);
+      setAllProjects(combined);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const projectIndex = allProjects.findIndex((item) => item.slug === slug);
+  const project = allProjects[projectIndex];
+  const nextProject = allProjects.length > 0 ? allProjects[(projectIndex + 1) % allProjects.length] : null;
   
   const [copied, setCopied] = useState(false);
-  
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="animate-pulse text-slate-400 font-bold uppercase tracking-widest">Accessing Intelligence...</div>
+      </div>
+    );
+  }
 
   if (!project) {
     return <Navigate to="/" replace />;

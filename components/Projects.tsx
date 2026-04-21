@@ -1,11 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ExternalLink, Github, Search, X } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import FadeIn from './FadeIn';
 import { Link } from 'react-router-dom';
+import { db } from '../firebase';
+import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<{ image: string, title: string } | null>(null);
+  const [dynamicProjects, setDynamicProjects] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, 'dynamic_projects'), orderBy('id', 'asc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const projectsData = snapshot.docs.map(doc => ({ firebaseId: doc.id, ...doc.data() }));
+      setDynamicProjects(projectsData);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const openModal = (image: string, title: string) => {
     setSelectedProject({ image, title });
@@ -16,6 +30,9 @@ const Projects: React.FC = () => {
     setSelectedProject(null);
     document.body.style.overflow = 'auto';
   };
+
+  // Combine static and dynamic projects, and sort by ID
+  const allProjects = [...PROJECTS, ...dynamicProjects].sort((a, b) => a.id - b.id);
 
   return (
     <section id="projects" className="py-24 bg-transparent transition-colors duration-300 relative overflow-hidden">
@@ -30,7 +47,9 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {PROJECTS.map((project, index) => (
+          {loading ? (
+             <div className="md:col-span-2 lg:col-span-3 text-center py-12 text-slate-400 text-xs font-bold uppercase tracking-widest animate-pulse">Loading Projects...</div>
+          ) : allProjects.map((project, index) => (
             <FadeIn key={project.id} delay={index * 100}>
               <div className="studio-card group flex flex-col h-full overflow-hidden rounded-2xl">
                 {/* Image Container */}

@@ -5,11 +5,12 @@ import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, orderBy, getD
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
 import StarRating from './StarRating';
-import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText, HelpCircle, Send, Mail } from 'lucide-react';
+import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText, HelpCircle, Send, Mail, Briefcase } from 'lucide-react';
 import ResumeManager from './ResumeManager';
+import ProjectManager from './ProjectManager';
 
 const AdminPanel: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume'>('resume');
+    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume' | 'projects'>('resume');
     const [reviews, setReviews] = useState<any[]>([]);
     const [replyTexts, setReplyTexts] = useState<{[key: string]: string}>({});
     const [adminUsers, setAdminUsers] = useState<any[]>([]);
@@ -48,13 +49,13 @@ const AdminPanel: React.FC = () => {
                 ...doc.data()
             }));
             setReviews(reviewsData);
-            setLoading(false);
         });
 
         const qUsers = query(collection(db, 'admins'), orderBy('createdAt', 'desc'));
         const unsubscribeUsers = onSnapshot(qUsers, (snapshot) => {
             const usersData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             setAdminUsers(usersData);
+            setLoading(false);
         });
 
         return () => {
@@ -229,6 +230,7 @@ const AdminPanel: React.FC = () => {
                 <div className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12">
                     {[
                         { id: 'reviews', label: 'Reviews', icon: MessageSquare },
+                        { id: 'projects', label: 'Projects', icon: Briefcase },
                         { id: 'users', label: 'Identity', icon: Users },
                         { id: 'resume', label: 'Resume', icon: FileText }
                     ].map((tab) => (
@@ -248,6 +250,8 @@ const AdminPanel: React.FC = () => {
 
                 {activeTab === 'resume' ? (
                     <ResumeManager />
+                ) : activeTab === 'projects' ? (
+                    <ProjectManager />
                 ) : activeTab === 'reviews' ? (
                     <div className="grid gap-6">
                         {reviews.length === 0 ? (
