@@ -364,7 +364,7 @@ const Terminal: React.FC = () => {
                 <div className="h-4 w-[1px] bg-white/10 mx-1" />
                 <div className="flex items-center gap-2">
                   <TerminalIcon className={`w-4 h-4 ${currentTheme.primary}`} />
-                  <span className="text-xs font-mono font-medium text-white/70">ambalavanan@portfolio:~</span>
+                  <span className="text-xs font-mono font-medium text-white/70">ambalavanan portfolio:~</span>
                 </div>
               </div>
               <button 
