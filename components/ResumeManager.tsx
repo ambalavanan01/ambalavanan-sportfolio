@@ -5,8 +5,8 @@ import { FileText, Globe } from 'lucide-react';
 const ResumeManager: React.FC = () => {
 
     const resumeData = {
-        pdfUrl: '/Ambalavanan_M_Resume.pdf',
-        docxUrl: '/Ambalavanan_M_Resume.docx'
+        pdfUrl: 'https://docs.google.com/document/d/1sq6rMu2P0U0Hnfgyg_vOEn8r3E7gJ2aq/export?format=pdf',
+        docxUrl: 'https://docs.google.com/document/d/19iE2CduRQxjKsLo73OE7FvHGV2EKPHpb/export?format=docx'
     };
 
     const handleDownload = (url: string) => {

@@ -175,7 +175,7 @@ const AdminPanel: React.FC = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium"
-                                    placeholder="admin@ambalavanan.me"
+                                    placeholder="ambalavanan275@gmail.com"
                                     required
                                 />
                             </div>
