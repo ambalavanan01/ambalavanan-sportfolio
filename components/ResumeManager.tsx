@@ -1,11 +1,11 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
-import { FileText, Globe } from 'lucide-react';
+import { FileText, Globe, FileCheck } from 'lucide-react';
 
 const ResumeManager: React.FC = () => {
 
     const resumeData = {
-        pdfUrl: 'https://docs.google.com/document/d/1sq6rMu2P0U0Hnfgyg_vOEn8r3E7gJ2aq/export?format=pdf',
+        pdfUrl: 'https://drive.google.com/uc?export=download&id=1sq6rMu2P0U0Hnfgyg_vOEn8r3E7gJ2aq',
         docxUrl: 'https://docs.google.com/document/d/19iE2CduRQxjKsLo73OE7FvHGV2EKPHpb/export?format=docx'
     };
 
@@ -23,6 +23,17 @@ const ResumeManager: React.FC = () => {
                 <div>
                     <h2 className="text-xl sm:text-2xl font-extrabold text-text uppercase tracking-tight">Resume <span className="text-primary italic">Manager</span></h2>
                     <p className="text-slate-500 mt-2 text-[10px] font-bold uppercase tracking-widest">Global Asset Distribution</p>
+                </div>
+                <div className="flex items-center gap-4">
+                    <a
+                        href="https://ambalavanan-resume-check.vercel.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full sm:w-auto px-6 py-3 bg-slate-900 text-white hover:bg-slate-800 rounded-xl transition-all border border-slate-800 text-[10px] font-extrabold uppercase tracking-widest flex items-center justify-center gap-2 active:scale-95 shadow-sm"
+                        title="Check ATS Score"
+                    >
+                        <FileCheck size={16} /> ATS Checker
+                    </a>
                 </div>
             </div>
 

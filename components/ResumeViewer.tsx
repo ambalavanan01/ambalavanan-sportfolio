@@ -33,7 +33,7 @@ const ResumeViewer: React.FC = () => {
     };
 
     const handleDownload = () => {
-        window.open(pdfUrl, '_blank');
+        window.open('https://drive.google.com/file/d/1sq6rMu2P0U0Hnfgyg_vOEn8r3E7gJ2aq/view?usp=drive_link', '_blank');
     };
 
     return (
@@ -54,16 +54,6 @@ const ResumeViewer: React.FC = () => {
                     </button>
                     
                     <div className="flex items-center justify-center gap-3 w-full sm:w-auto">
-                        <a
-                            href="https://ambalavanan-resume-check.vercel.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 sm:flex-none justify-center px-5 py-3 bg-white border-2 border-slate-100 text-slate-600 rounded-xl transition-all shadow-[0_4px_0_0_rgba(226,232,240,1)] hover:shadow-[0_6px_0_0_rgba(226,232,240,1)] hover:-translate-y-0.5 active:shadow-[0_0px_0_0_rgba(226,232,240,1)] active:translate-y-1 flex items-center gap-2 text-xs font-bold uppercase tracking-widest"
-                            title="Check ATS Score"
-                        >
-                            <FileCheck size={16} /> 
-                            <span className="hidden sm:inline">ATS Check</span>
-                        </a>
                         <button
                             onClick={handleDownload}
                             className="flex-1 sm:flex-none justify-center px-6 py-3 bg-slate-900 border-2 border-slate-900 text-white rounded-xl transition-all shadow-[0_4px_0_0_rgba(15,23,42,1)] hover:bg-slate-800 hover:shadow-[0_6px_0_0_rgba(15,23,42,1)] hover:-translate-y-0.5 active:shadow-[0_0px_0_0_rgba(15,23,42,1)] active:translate-y-1 text-xs font-bold uppercase tracking-widest flex items-center gap-2"
