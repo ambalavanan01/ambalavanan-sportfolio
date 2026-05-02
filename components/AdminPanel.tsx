@@ -5,12 +5,13 @@ import { collection, query, onSnapshot, doc, updateDoc, deleteDoc, orderBy, getD
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { toast } from 'react-hot-toast';
 import StarRating from './StarRating';
-import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText, HelpCircle, Send, Mail, Briefcase } from 'lucide-react';
+import { Check, X, Trash2, Clock, Pin, PinOff, LogOut, Users, MessageSquare, FileText, HelpCircle, Send, Mail, Briefcase, Terminal } from 'lucide-react';
 import ResumeManager from './ResumeManager';
 import ProjectManager from './ProjectManager';
 
 const AdminPanel: React.FC = () => {
-    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume' | 'projects'>('resume');
+    const [activeTab, setActiveTab] = useState<'reviews' | 'users' | 'resume' | 'projects'>('reviews');
+    const [reviewSearchQuery, setReviewSearchQuery] = useState('');
     const [reviews, setReviews] = useState<any[]>([]);
     const [replyTexts, setReplyTexts] = useState<{[key: string]: string}>({});
     const [adminUsers, setAdminUsers] = useState<any[]>([]);
@@ -254,12 +255,29 @@ const AdminPanel: React.FC = () => {
                     <ProjectManager />
                 ) : activeTab === 'reviews' ? (
                     <div className="grid gap-6">
-                        {reviews.length === 0 ? (
+                        <div className="w-full">
+                            <input
+                                type="text"
+                                placeholder="Search reviews by name, email, or comment..."
+                                value={reviewSearchQuery}
+                                onChange={(e) => setReviewSearchQuery(e.target.value)}
+                                className="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl text-text placeholder-slate-400 focus:outline-none focus:border-primary/50 transition-all text-sm font-medium shadow-sm"
+                            />
+                        </div>
+                        {reviews.filter(review => 
+                            review.name?.toLowerCase().includes(reviewSearchQuery.toLowerCase()) || 
+                            review.email?.toLowerCase().includes(reviewSearchQuery.toLowerCase()) ||
+                            review.comment?.toLowerCase().includes(reviewSearchQuery.toLowerCase())
+                        ).length === 0 ? (
                             <div className="text-center py-24 bg-white rounded-[2.5rem] border border-dashed border-slate-200">
                                 <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">No active logs available.</p>
                             </div>
                         ) : (
-                            reviews.map((review) => (
+                            reviews.filter(review => 
+                                review.name?.toLowerCase().includes(reviewSearchQuery.toLowerCase()) || 
+                                review.email?.toLowerCase().includes(reviewSearchQuery.toLowerCase()) ||
+                                review.comment?.toLowerCase().includes(reviewSearchQuery.toLowerCase())
+                            ).map((review) => (
                                 <div
                                     key={review.id}
                                     className={`p-5 sm:p-8 rounded-2xl sm:rounded-[2.5rem] border studio-card bg-white transition-all duration-300 ${review.status === 'pending'
@@ -331,8 +349,9 @@ const AdminPanel: React.FC = () => {
                         )}
                     </div>
                 ) : (
-                    <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">
-                        <div className="bg-white p-6 sm:p-10 rounded-2xl sm:rounded-[2.5rem] border border-slate-200 studio-card">
+                    <div className="space-y-6 sm:space-y-10">
+                        <div className="grid lg:grid-cols-2 gap-6 sm:gap-10">
+                            <div className="bg-white p-6 sm:p-10 rounded-2xl sm:rounded-[2.5rem] border border-slate-200 studio-card">
                             <h2 className="text-lg sm:text-xl font-extrabold text-text uppercase tracking-tight mb-8 flex items-center gap-3">
                                 <Users size={20} className="text-primary" /> Active Operators: {adminUsers.length}
                             </h2>
@@ -391,6 +410,41 @@ const AdminPanel: React.FC = () => {
                                     {isCreatingUser ? 'Processing...' : 'Provision Operator'}
                                 </button>
                             </form>
+                        </div>
+                        </div>
+                        
+                        <div className="bg-white p-6 sm:p-10 rounded-2xl sm:rounded-[2.5rem] border border-slate-200 studio-card">
+                            <h2 className="text-lg sm:text-xl font-extrabold text-text uppercase tracking-tight mb-8 flex items-center gap-3">
+                                <Terminal size={20} className="text-primary" /> Terminal Command Reference
+                            </h2>
+                            <div className="space-y-4">
+                                <p className="text-sm font-medium text-slate-500 mb-4">
+                                    Press <kbd className="px-2 py-1 bg-slate-100 border border-slate-200 rounded-md text-xs font-bold text-slate-700">Ctrl</kbd> + <kbd className="px-2 py-1 bg-slate-100 border border-slate-200 rounded-md text-xs font-bold text-slate-700">/</kbd> anywhere on the site to open the terminal. These hidden commands are only known to you.
+                                </p>
+                                <div className="grid sm:grid-cols-2 gap-3">
+                                    {[
+                                        { cmd: 'admin', desc: 'Initiates admin login sequence' },
+                                        { cmd: 'admin --logout', desc: 'Ends your active admin session' },
+                                        { cmd: 'admin --review', desc: 'Shows all pending/unapproved reviews' },
+                                        { cmd: 'admin --stats', desc: 'Shows real-time platform statistics' },
+                                        { cmd: 'admin --user', desc: 'Displays currently authenticated admin email' },
+                                        { cmd: 'admin --userlist', desc: 'Lists all provisioned admin operators' },
+                                        { cmd: 'admin --createuser', desc: 'Initiates wizard to provision a new admin operator' },
+                                        { cmd: 'admin --addproject', desc: 'Starts a wizard to push a new project' },
+                                        { cmd: 'admin --mode stealth', desc: 'Toggles low-opacity terminal stealth mode' },
+                                        { cmd: 'admin [email/name] --purge', desc: 'Deletes the specified reviewer\'s review' },
+                                        { cmd: 'admin [email/name] --pin', desc: 'Pins the specified reviewer\'s review' },
+                                        { cmd: 'admin --open', desc: 'Opens the Admin Panel web interface' },
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                            <code className="text-primary font-bold bg-primary/10 px-3 py-1.5 rounded-lg text-xs shrink-0 whitespace-nowrap">
+                                                {item.cmd}
+                                            </code>
+                                            <span className="text-sm font-medium text-slate-600">{item.desc}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}
